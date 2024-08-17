@@ -1,0 +1,398 @@
+"" ========================================================
+"" Base Settings
+"" ========================================================
+set scrolloff=10
+set history=1000
+set number relativenumber
+set showmode
+set showcmd
+set smartcase
+set incsearch
+set hlsearch
+set visualbell
+
+" Use system clipboard
+set clipboard+=unnamed
+let mapleader="\<space>"
+set gdefault
+
+" ideavim settings
+set ideajoin
+set ideamarks
+set idearefactormode=normal
+set ideastatusicon=gray
+
+
+"" ========================================================
+"" Plugin Settings
+"" ========================================================
+set exchange
+set commentary
+set ReplaceWithRegister
+set textobj-entire
+set indent-object
+set surround
+set highlightedyank
+set nerdtree
+
+" Highlighted Search
+set sneak
+set quickscope
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+" Argument Object
+set argtextobj
+let g:argtextobj_pairs="[:],(:),<:>"
+
+" Easymotion settings
+set easymotion
+let g:EasyMotion_override_acejump = 0
+
+" Which-key settings
+set which-key
+set notimeout
+let g:WhichKey_FontSize = 20
+let g:WhichKey_PrefixColor = "#a403fe"
+let g:WhichKey_CommandColor = "#01ffff"
+let g:WhichKey_PrefixStyle = "bold"
+let g:WhichKey_KeyStyle = "italic"
+let g:WhichKey_SortOrder = "by_key_prefix_first"
+let g:WhichKey_ShowTypedSequence = "false"
+
+
+"" ========================================================
+"" Key Mappings
+"" ========================================================
+" Tab navigation
+nmap <C-p> <Action>(PreviousTab)
+nmap <C-n> <Action>(NextTab)
+
+" Pane navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-k> <C-w>k
+nnoremap <C-j> <C-w>j
+
+" Jump between methods
+nmap [[ <Action>(MethodUp)
+nmap ]] <Action>(MethodDown)
+
+" Easy visual indentation
+vnoremap < <gv
+vnoremap > >gv
+
+nmap <C-i> <Action>(Back)
+nmap <C-o> <Action>(Forward)
+nmap <C-m> <Action>(ShowPopupMenu)
+nmap <C-S-m> <Action>(ToolWindowsGroup)
+nnoremap <C-[> :noh<return>
+
+
+"" ========================================================
+"" Leader Commands
+"" ========================================================
+
+" EasyMotion
+let g:WhichKeyDesc_easymotion = "<leader><leader> EasyMotion"
+
+
+" Information commands
+nmap <leader>ie <action>(ShowErrorDescription)
+nmap <leader>it <action>(ExpressionTypeInfo)
+nmap <leader>ip <action>(ParameterInfo)
+nmap <leader>ij <action>(QuickJavaDoc)
+nmap <leader>if <action>(FileStructurePopup)
+nmap <leader>iU <action>(ShowUmlDiagram)
+nmap <leader>ih <action>(CallHierarchy)
+nmap <leader>iu <action>(ShowUsages)
+nmap <leader>im <action>(MethodHierarchy)
+let g:WhichKeyDesc_info = "<leader>i Information"
+let g:WhichKeyDesc_info_error = "<leader>ie Error Description"
+let g:WhichKeyDesc_info_type = "<leader>it Expression Type"
+let g:WhichKeyDesc_info_parameter = "<leader>ip Parameter Info"
+let g:WhichKeyDesc_info_javadoc = "<leader>ij Java Doc"
+let g:WhichKeyDesc_info_file_structure = "<leader>if File Structure"
+let g:WhichKeyDesc_info_uml_diagram = "<leader>iU UML Diagram"
+let g:WhichKeyDesc_info_call_hierarchy = "<leader>ih Call Hierarchy"
+let g:WhichKeyDesc_info_show_usages = "<leader>iu Usages"
+let g:WhichKeyDesc_info_method_hierarchy = "<leader>im Method Hierarchy"
+
+
+" Window splits
+nmap <leader>wv <action>(SplitVertically)
+nmap <leader>wh <action>(SplitHorizontally)
+nmap <leader>wu <action>(Unsplit)
+nmap <leader>wm <action>(MoveEditorToOppositeTabGroup)
+nmap <leader>wb <action>(Back)
+nmap <leader>wf <action>(Forward)
+let g:WhichKeyDesc_window = "<leader>w Window splits"
+let g:WhichKeyDesc_window_split_vertically = "<leader>wv Split vertically"
+let g:WhichKeyDesc_window_split_horizontally = "<leader>wh Split horizontally"
+let g:WhichKeyDesc_window_split_unsplit = "<leader>wu Unsplit"
+let g:WhichKeyDesc_window_split_move_editor = "<leader>wm Move editor to opposite tab group"
+let g:WhichKeyDesc_window_split_back = "<leader>wb Back split"
+let g:WhichKeyDesc_window_split_forward = "<leader>wf Forward split"
+
+
+" Tab Navigation and Management
+nmap <leader>tP <Action>(PinActiveEditorTab)
+nmap <leader>tg1 <Action>(GoToTab1)
+nmap <leader>tg2 <Action>(GoToTab2)
+nmap <leader>tg3 <Action>(GoToTab3)
+nmap <leader>tg4 <Action>(GoToTab4)
+nmap <leader>tg5 <Action>(GoToTab5)
+nmap <leader>tg6 <Action>(GoToTab6)
+nmap <leader>tg7 <Action>(GoToTab7)
+nmap <leader>tg8 <Action>(GoToTab8)
+nmap <leader>tg9 <Action>(GoToTab9)
+nmap <leader>tx <Action>(CloseContent)
+nmap <leader>tX <Action>(CloseAllEditors)
+nmap <leader>to <Action>(CloseAllEditorsButActive)
+nmap <leader>ta <Action>(CloseAllUnpinnedEditors)
+let g:WhichKeyDesc_tabs = "<leader>t Tabs"
+let g:WhichKeyDesc_tabs_pin = "<leader>tP Pin Active Tab"
+let g:WhichKeyDesc_tabs_go_to = "<leader>tg Go to Tab"
+let g:WhichKeyDesc_tabs_go_to_1 = "<leader>tg1 Go to Tab 1"
+let g:WhichKeyDesc_tabs_go_to_2 = "<leader>tg2 Go to Tab 2"
+let g:WhichKeyDesc_tabs_go_to_3 = "<leader>tg3 Go to Tab 3"
+let g:WhichKeyDesc_tabs_go_to_4 = "<leader>tg4 Go to Tab 4"
+let g:WhichKeyDesc_tabs_go_to_5 = "<leader>tg5 Go to Tab 5"
+let g:WhichKeyDesc_tabs_go_to_6 = "<leader>tg6 Go to Tab 6"
+let g:WhichKeyDesc_tabs_go_to_7 = "<leader>tg7 Go to Tab 7"
+let g:WhichKeyDesc_tabs_go_to_8 = "<leader>tg8 Go to Tab 8"
+let g:WhichKeyDesc_tabs_go_to_9 = "<leader>tg9 Go to Tab 9"
+let g:WhichKeyDesc_tabs_close = "<leader>tx Close Current Tab"
+let g:WhichKeyDesc_tabs_close_all = "<leader>tX Close All Tabs"
+let g:WhichKeyDesc_tabs_close_all_but_active = "<leader>to Close All Tabs But Active"
+let g:WhichKeyDesc_tabs_close_all_unpinned = "<leader>ta Close All Unpinned Tabs"
+
+
+
+" Display options
+map <leader>Dd <action>(ToggleDistractionFreeMode)
+map <leader>Dz <action>(ToggleZenMode)
+map <leader>Df <action>(ToggleFullScreen)
+let g:WhichKeyDesc_display = "<leader>D Display options"
+let g:WhichKeyDesc_zen_mode = "<leader>Dz Toggle Zen mode"
+let g:WhichKeyDesc_df_mode = "<leader>Dd Toggle Distraction-Free mode"
+let g:WhichKeyDesc_fullscreen = "<leader>Df Toggle full screen"
+
+
+" File navigation
+nmap <leader>fg <Action>(GotoFile)
+nmap <leader>fr <Action>(RecentFiles)
+nmap <leader>fc <Action>(FindInPath)
+nmap <leader>fl <Action>(RecentLocations)
+nmap <leader>fs <Action>(NewScratchFile)
+nmap <leader>fe :NERDTreeToggle<CR>
+nmap <leader>fo <Action>(OpenFile)
+nmap <leader>fy <Action>(CopyAbsolutePath)
+nmap <leader>fp <Action>(ManageRecentProjects)
+nmap <leader>fh <Action>(LocalHistory.ShowHistory)
+nmap <leader>ff <Action>(ShowFilePath)
+nmap <leader>fi <Action>(SelectIn)
+nmap <leader>fp <Action>(ReplaceInPath)
+let g:WhichKeyDesc_file_opt = "<leader>f File navigation"
+let g:WhichKeyDesc_file_opt_goto_file = "<leader>fg Go To File"
+let g:WhichKeyDesc_file_opt_goto_content = "<leader>fc Find In Files"
+let g:WhichKeyDesc_file_opt_show_recent_files = "<leader>fr Recent Files"
+let g:WhichKeyDesc_file_opt_show_recent_locations = "<leader>fl Recent Locations"
+let g:WhichKeyDesc_file_opt_new_scratch_file = "<leader>fs New Scratch File"
+let g:WhichKeyDesc_file_opt_toggle_nerdtree = "<leader>fe Toggle NERDTree"
+let g:WhichKeyDesc_file_opt_open_file = "<leader>fo Open File"
+let g:WhichKeyDesc_file_opt_copy_path = "<leader>fy Copy Absolute Path"
+let g:WhichKeyDesc_file_opt_recent_projects = "<leader>fp Manage Recent Projects"
+let g:WhichKeyDesc_file_opt_history = "<leader>fh Show Local History"
+let g:WhichKeyDesc_file_opt_show_path = "<leader>ff Show File Path"
+let g:WhichKeyDesc_file_opt_select_in = "<leader>fi Select In"
+let g:WhichKeyDesc_file_opt_replace_in_path = "<leader>fp Replace In Path"
+
+
+" Run Actions
+nmap <leader>rm <action>(RunMenu)
+nmap <leader>rn <action>(RunClass)
+nmap <leader>rc <Action>(ContextRun)
+nmap <leader>rr <action>(Rerun)
+nmap <leader>rt <Action>(RunTests)
+nmap <leader>rf <action>(RerunFailedTests)
+nmap <leader>rs <Action>(Stop)
+nmap <leader>rC <action>(ChooseRunConfiguration)
+let g:WhichKeyDesc_run = "<leader>r Run"
+let g:WhichKeyDesc_run_menu = "<leader>rm Run Menu"
+let g:WhichKeyDesc_run_class = "<leader>rn Run Class"
+let g:WhichKeyDesc_run_context = "<leader>rc Context Run"
+let g:WhichKeyDesc_run_rerun = "<leader>rr Rerun"
+let g:WhichKeyDesc_run_tests = "<leader>rt Run Tests"
+let g:WhichKeyDesc_run_failed = "<leader>rf Rerun Failed Tests"
+let g:WhichKeyDesc_run_stop = "<leader>rs Stop"
+let g:WhichKeyDesc_run_choose_configuration = "<leader>rC Choose Run Configuration"
+
+
+" Debugging commands
+nmap <leader>dx <Action>(Debug)
+nmap <leader>dc <Action>(ContextDebug)
+nmap <leader>dv <Action>(ViewBreakpoints)
+nmap <leader>de <Action>(EditBreakpoint)
+nmap <leader>dm <Action>(XDebugger.MuteBreakpoints)
+nmap <leader>dt <Action>(ToggleLineBreakpoint)
+nmap <leader>dC <Action>(RunToCursor)
+nmap <leader>di <Action>(StepInto)
+nmap <leader>do <Action>(StepOver)
+nmap <leader>dr <Action>(Resume)
+nmap <leader>dR <Action>(EvaluateExpression)
+nmap <leader>dt <Action>(ActivateDebugToolWindow)
+let g:WhichKeyDesc_debugging = "<leader>d Debugging"
+let g:WhichKeyDesc_debug_execute = "<leader>dx Execute Debug"
+let g:WhichKeyDesc_debug_context = "<leader>dc Context Debug"
+let g:WhichKeyDesc_debug_view_breakpoints = "<leader>dv View Breakpoints"
+let g:WhichKeyDesc_debug_edit_breakpoints = "<leader>de Edit Breakpoints"
+let g:WhichKeyDesc_debug_mute_breakpoints = "<leader>dm Mute Breakpoints"
+let g:WhichKeyDesc_debug_toggle_line_breakpoint = "<leader>dt Toggle Line Breakpoint"
+let g:WhichKeyDesc_debug_run_to_cursor = "<leader>dC Run to Cursor"
+let g:WhichKeyDesc_debug_step_into = "<leader>di Step Into"
+let g:WhichKeyDesc_debug_step_over = "<leader>do Step Over"
+let g:WhichKeyDesc_debug_resume = "<leader>dr Resume Debugging"
+let g:WhichKeyDesc_debug_evaluate_expression = "<leader>dR Evaluate Expression"
+let g:WhichKeyDesc_debug_activate_tool_window = "<leader>dt Activate Debug Tool Window"
+
+
+" Language Actions
+nmap <leader>ll <Action>(Refactorings.QuickListPopupAction)
+nmap <leader>lr <Action>(RenameElement)
+nmap <leader>lc <Action>(ChangeSignature)
+nmap <leader>lv <Action>(IntroduceVariable)
+nmap <leader>li <Action>(Inline)
+nmap <leader>lf <Action>(IntroduceField)
+nmap <leader>lm <Action>(ExtractMethod)
+nmap <leader>lC <Action>(IntroduceConstant)
+nmap <leader>lp <Action>(IntroduceParameter)
+nmap <leader>lo <Action>(IntroduceParameterObject)
+nmap <leader>le <Action>(EncapsulateFields)
+nmap <leader>la <Action>(ShowIntentionActions)
+nmap <leader>lR <Action>(ReformatCode)
+nmap <leader>lI <Action>(InspectCode)
+nmap <leader>lG <Action>(Generate)
+let g:WhichKeyDesc_language = "<leader>l Language"
+let g:WhichKeyDesc_language_menu = "<leader>ll Quick List"
+let g:WhichKeyDesc_language_rename = "<leader>lr Rename"
+let g:WhichKeyDesc_language_change_signature = "<leader>lc Change Signature"
+let g:WhichKeyDesc_language_inline_variable = "<leader>li Inline"
+let g:WhichKeyDesc_language_introduce_field = "<leader>lf Introduce Field"
+let g:WhichKeyDesc_language_extract_method = "<leader>lm Extract Method"
+let g:WhichKeyDesc_language_introduce_constant = "<leader>lC Introduce Constant"
+let g:WhichKeyDesc_language_introduce_parameter = "<leader>lp Introduce Parameter"
+let g:WhichKeyDesc_language_introduce_param_object = "<leader>lo Introduce Parameter Object"
+let g:WhichKeyDesc_language_encapsulate = "<leader>le Encapsulate Fields"
+let g:WhichKeyDesc_language_show_intention_actions = "<leader>la Show Intention Actions"
+let g:WhichKeyDesc_language_reformat_code = "<leader>lR Reformat Code"
+let g:WhichKeyDesc_language_inspect_code = "<leader>lI Inspect Code"
+let g:WhichKeyDesc_language_generate = "<leader>lG Generate"
+
+
+""" Bookmarks
+nmap <leader>bm <Action>(Bookmarks)
+nmap <leader>bs <Action>(ShowBookmarks)
+nmap <leader>bt <Action>(ActivateBookmarksToolWindow)
+nmap <leader>bb <Action>(ToggleBookmark)
+nmap <leader>be <Action>(EditBookmark)
+nmap <leader>bp <Action>(GotoPreviousBookmark)
+nmap <leader>bn <Action>(GotoNextBookmark)
+let g:WhichKeyDesc_bookmarks = "<leader>b Bookmarks"
+let g:WhichKeyDesc_bookmarks_menu = "<leader>bm Bookmark Menu"
+let g:WhichKeyDesc_bookmarks_show = "<leader>bs Show Bookmarks"
+let g:WhichKeyDesc_bookmarks_tool = "<leader>bt Bookmark Tool"
+let g:WhichKeyDesc_bookmarks_toggle_bookmark = "<leader>bb Toggle Bookmark"
+let g:WhichKeyDesc_bookmarks_edit = "<leader>be Edit Bookmark"
+let g:WhichKeyDesc_bookmarks_prev = "<leader>bp Previous Bookmark"
+let g:WhichKeyDesc_bookmarks_next = "<leader>bn Next Bookmark"
+
+
+" Go To
+nmap <leader>gd <Action>(GotoDeclaration)
+nmap <leader>go <Action>(GotoSuperMethod)
+nmap <leader>gD <Action>(GotoTypeDeclaration)
+nmap <leader>gi <Action>(GotoImplementation)
+nmap <leader>gT <Action>(GotoTest)
+let g:WhichKeyDesc_goto = "<leader>g Go To"
+let g:WhichKeyDesc_goto_declaration = "<leader>gd Go To Declaration"
+let g:WhichKeyDesc_goto_super_method = "<leader>go Go To Super Method"
+let g:WhichKeyDesc_goto_type_declaration = "<leader>gD Go To Type Declaration"
+let g:WhichKeyDesc_goto_implementation = "<leader>gi Go To Implementation"
+let g:WhichKeyDesc_goto_test = "<leader>gT Go To Test"
+
+
+" Search
+nmap <leader>sS <action>(SearchEverywhere)
+nmap <leader>su <Action>(FindUsages)
+nmap <leader>sn <Action>(ShowNavBar)
+nmap <leader>sa <Action>(GotoAction)
+nmap <leader>sc <Action>(GotoClass)
+nmap <leader>sf <Action>(GotoFile)
+nmap <leader>ss <Action>(GotoSymbol)
+nmap <leader>st <Action>(TextSearchAction)
+let g:WhichKeyDesc_search = "<leader>s Search"
+let g:WhichKeyDesc_search_everywhere = "<leader>sS Search Everywhere"
+let g:WhichKeyDesc_search_usages = "<leader>su Find Usages"
+let g:WhichKeyDesc_search_nav_bar = "<leader>sn Show Nav Bar"
+let g:WhichKeyDesc_search_action = "<leader>sa Search Action"
+let g:WhichKeyDesc_search_class = "<leader>sc Search Class"
+let g:WhichKeyDesc_search_file = "<leader>sf Search File"
+let g:WhichKeyDesc_search_symbol = "<leader>ss Search Symbol"
+let g:WhichKeyDesc_search_text = "<leader>st Search Text"
+
+
+" Case Conversion
+vmap <leader>cm <Action>(me.laria.code.idea_caseconv.convert_case_menu)
+vmap <leader>cc <Action>(me.laria.code.idea_caseconv.CamelCaseAction)
+vmap <leader>cp <Action>(me.laria.code.idea_caseconv.PascalCaseAction)
+vmap <leader>cs <Action>(me.laria.code.idea_caseconv.SnakeCaseAction)
+vmap <leader>cS <Action>(me.laria.code.idea_caseconv.ScreamingSnakeCaseAction)
+vmap <leader>cl <Action>(me.laria.code.idea_caseconv.LowerCaseAction)
+vmap <leader>cu <Action>(me.laria.code.idea_caseconv.UpperCaseAction)
+vmap <leader>c. <Action>(me.laria.code.idea_caseconv.DotCaseAction)
+vmap <leader>cw <Action>(me.laria.code.idea_caseconv.SeparateWordsAction)
+vmap <leader>ct <Action>(me.laria.code.idea_caseconv.TitleCaseAction)
+vmap <leader>c- <Action>(me.laria.code.idea_caseconv.DashCaseAction)
+vmap <leader>cd <Action>(me.laria.code.idea_caseconv.SentenceCaseAction)
+let g:WhichKeyDesc_case_conversion = "<leader>c Case Conversion"
+let g:WhichKeyDesc_change_case_menu = "<leader>cm Case Menu"
+let g:WhichKeyDesc_case_conversion_camel = "<leader>cc camelCase"
+let g:WhichKeyDesc_case_conversion_pascal = "<leader>cp PascalCase"
+let g:WhichKeyDesc_case_conversion_snake = "<leader>cs snake_case"
+let g:WhichKeyDesc_case_conversion_screaming_snake = "<leader>cS SCREAMING_SNAKE_CASE"
+let g:WhichKeyDesc_case_conversion_lower = "<leader>cl lowercase"
+let g:WhichKeyDesc_case_conversion_upper = "<leader>cu UPPERCASE"
+let g:WhichKeyDesc_case_conversion_dot = "<leader>c. dot.case"
+let g:WhichKeyDesc_case_conversion_words = "<leader>cw Separate Words"
+let g:WhichKeyDesc_case_conversion_title = "<leader>ct Title Case"
+let g:WhichKeyDesc_case_conversion_dash = "<leader>c- dash-case"
+let g:WhichKeyDesc_case_conversion_sentence = "<leader>cd Sentence case"
+
+
+" Git
+nmap <leader>Gc <Action>(Vcs.Show.Local.Changes)
+nmap <leader>Gb <Action>(Git.Branches)
+nmap <leader>Gf <Action>(Git.Fetch)
+nmap <leader>Gp <Action>(Vcs.Push)
+nmap <leader>GP <Action>(Git.Commit.And.Push.Executor)
+nmap <leader>Go <Action>(Github.View.Pull.Request)
+nmap <leader>Gm <Action>(VcsGroups)
+nmap <leader>Gg <Action>(CheckinProject)
+nmap <leader>Ga <Action>(Annotate)
+nmap <leader>Gt <Action>(ActivateVersionControlToolWindow)
+nmap <leader>Gr <Action>(Vcs.RollbackChangedLines)
+nmap <leader>Gu <Action>(Vcs.UpdateProject)
+let g:WhichKeyDesc_git = "<leader>G Git"
+let g:WhichKeyDesc_git_checkin = "<leader>Gg Checkin"
+let g:WhichKeyDesc_git_branches = "<leader>Gb Branches"
+let g:WhichKeyDesc_git_push = "<leader>Gp Push"
+let g:WhichKeyDesc_git_commit_and_push = "<leader>GP Commit & Push"
+let g:WhichKeyDesc_git_menu = "<leader>Gm Menu"
+let g:WhichKeyDesc_git_fetch = "<leader>Gf Fetch"
+let g:WhichKeyDesc_git_annotate = "<leader>Ga Annotate"
+let g:WhichKeyDesc_git_log = "<leader>Gl Log"
+let g:WhichKeyDesc_git_tool = "<leader>Gt Tool"
+let g:WhichKeyDesc_git_rollback_changed_lines = "<leader>Gr Rollback"
+let g:WhichKeyDesc_git_open_pull_requests = "<leader>Go Open Pull Requests"
+let g:WhichKeyDesc_git_local_changes = "<leader>Gc Show Local Changes"
+let g:WhichKeyDesc_git_update_project = "<leader>Gu Update Project"
