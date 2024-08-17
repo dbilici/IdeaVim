@@ -1,0 +1,2 @@
+# IdeaVim
+Ideavim configuarations 
