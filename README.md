@@ -197,15 +197,15 @@ let g:WhichKeyDesc_easymotion = "<leader><leader> EasyMotion"
 ### Information Commands
 This section provides a set of leader key mappings focused on retrieving various types of information in your JetBrains IDE. Each command is designed to quickly access important details related to your code.
 ```
-nmap <leader>ie <action>(ShowErrorDescription)
-nmap <leader>it <action>(ExpressionTypeInfo)
-nmap <leader>ip <action>(ParameterInfo)
-nmap <leader>ij <action>(QuickJavaDoc)
-nmap <leader>if <action>(FileStructurePopup)
-nmap <leader>iU <action>(ShowUmlDiagram)
-nmap <leader>ih <action>(CallHierarchy)
-nmap <leader>iu <action>(ShowUsages)
-nmap <leader>im <action>(MethodHierarchy)
+nmap <leader>ie <Action>(ShowErrorDescription)
+nmap <leader>it <Action>(ExpressionTypeInfo)
+nmap <leader>ip <Action>(ParameterInfo)
+nmap <leader>ij <Action>(QuickJavaDoc)
+nmap <leader>if <Action>(FileStructurePopup)
+nmap <leader>iU <Action>(ShowUmlDiagram)
+nmap <leader>ih <Action>(CallHierarchy)
+nmap <leader>iu <Action>(ShowUsages)
+nmap <leader>im <Action>(MethodHierarchy)
 let g:WhichKeyDesc_info = "<leader>i Information"
 let g:WhichKeyDesc_info_error = "<leader>ie Error Description"
 let g:WhichKeyDesc_info_type = "<leader>it Expression Type"
@@ -230,12 +230,12 @@ let g:WhichKeyDesc_info_method_hierarchy = "<leader>im Method Hierarchy"
 ### Window Split Commands
 This section provides leader key mappings for managing and navigating window splits within your JetBrains IDE. These commands allow you to split the editor window vertically or horizontally, unsplit windows, and manage window groups.
 ```
-nmap <leader>wv <action>(SplitVertically)
-nmap <leader>wh <action>(SplitHorizontally)
-nmap <leader>wu <action>(Unsplit)
-nmap <leader>wm <action>(MoveEditorToOppositeTabGroup)
-nmap <leader>wb <action>(Back)
-nmap <leader>wf <action>(Forward)
+nmap <leader>wv <Action>(SplitVertically)
+nmap <leader>wh <Action>(SplitHorizontally)
+nmap <leader>wu <Action>(Unsplit)
+nmap <leader>wm <Action>(MoveEditorToOppositeTabGroup)
+nmap <leader>wb <Action>(Back)
+nmap <leader>wf <Action>(Forward)
 let g:WhichKeyDesc_window = "<leader>w Window splits"
 let g:WhichKeyDesc_window_split_vertically = "<leader>wv Split vertically"
 let g:WhichKeyDesc_window_split_horizontally = "<leader>wh Split horizontally"
@@ -295,9 +295,9 @@ let g:WhichKeyDesc_tabs_close_all_unpinned = "<leader>tP Close All Unpinned Tabs
 ### Display Mode Commands
 This set of leader key mappings provides quick access to various display and distraction-free modes in your JetBrains IDE. These commands help you focus on your work by adjusting the IDE’s interface.
 ```
-map <leader>Dd <action>(ToggleDistractionFreeMode)
-map <leader>Dz <action>(ToggleZenMode)
-map <leader>Df <action>(ToggleFullScreen)
+map <leader>Dd <Action>(ToggleDistractionFreeMode)
+map <leader>Dz <Action>(ToggleZenMode)
+map <leader>Df <Action>(ToggleFullScreen)
 let g:WhichKeyDesc_display = "<leader>D Display options"
 let g:WhichKeyDesc_zen_mode = "<leader>Dz Toggle Zen mode"
 let g:WhichKeyDesc_df_mode = "<leader>Dd Toggle Distraction-Free mode"
@@ -355,14 +355,14 @@ let g:WhichKeyDesc_file_opt_replace_in_path = "<leader>fp Replace In Path"
 # Run and Test Management Commands
 These leader key mappings provide quick access to various run and test-related actions in your JetBrains IDE. They help streamline the process of running, rerunning, and managing configurations for your code.
 ```
-nmap <leader>rm <action>(RunMenu)
-nmap <leader>rn <action>(RunClass)
+nmap <leader>rm <Action>(RunMenu)
+nmap <leader>rn <Action>(RunClass)
 nmap <leader>rc <Action>(ContextRun)
-nmap <leader>rr <action>(Rerun)
+nmap <leader>rr <Action>(Rerun)
 nmap <leader>rt <Action>(RunTests)
-nmap <leader>rf <action>(RerunFailedTests)
+nmap <leader>rf <Action>(RerunFailedTests)
 nmap <leader>rs <Action>(Stop)
-nmap <leader>rC <action>(ChooseRunConfiguration)
+nmap <leader>rC <Action>(ChooseRunConfiguration)
 let g:WhichKeyDesc_run = "<leader>r Run"
 let g:WhichKeyDesc_run_menu = "<leader>rm Run Menu"
 let g:WhichKeyDesc_run_class = "<leader>rn Run Class"
@@ -381,3 +381,45 @@ let g:WhichKeyDesc_run_choose_configuration = "<leader>rC Choose Run Configurati
 - `<leader>rf` Reruns only the tests that failed during the previous test run, helping you focus on fixing issues without running all tests again.
 - `<leader>rs` Stops the currently running process or test, allowing you to halt execution if needed.
 - `<leader>rC` Opens the "Choose Run Configuration" dialog, letting you select or switch between different run configurations for your project.
+
+### Debugging Commands
+These leader key mappings streamline various debugging tasks in your JetBrains IDE. They provide quick access to debugging features such as running, stepping through code, and managing breakpoints.
+```
+nmap <leader>dx <Action>(Debug)
+nmap <leader>dc <Action>(ContextDebug)
+nmap <leader>dv <Action>(ViewBreakpoints)
+nmap <leader>de <Action>(EditBreakpoint)
+nmap <leader>dm <Action>(XDebugger.MuteBreakpoints)
+nmap <leader>dt <Action>(ToggleLineBreakpoint)
+nmap <leader>dC <Action>(RunToCursor)
+nmap <leader>di <Action>(StepInto)
+nmap <leader>do <Action>(StepOver)
+nmap <leader>dr <Action>(Resume)
+nmap <leader>dR <Action>(EvaluateExpression)
+nmap <leader>dt <Action>(ActivateDebugToolWindow)
+let g:WhichKeyDesc_debugging = "<leader>d Debugging"
+let g:WhichKeyDesc_debug_execute = "<leader>dx Execute Debug"
+let g:WhichKeyDesc_debug_context = "<leader>dc Context Debug"
+let g:WhichKeyDesc_debug_view_breakpoints = "<leader>dv View Breakpoints"
+let g:WhichKeyDesc_debug_edit_breakpoints = "<leader>de Edit Breakpoints"
+let g:WhichKeyDesc_debug_mute_breakpoints = "<leader>dm Mute Breakpoints"
+let g:WhichKeyDesc_debug_toggle_line_breakpoint = "<leader>dt Toggle Line Breakpoint"
+let g:WhichKeyDesc_debug_run_to_cursor = "<leader>dC Run to Cursor"
+let g:WhichKeyDesc_debug_step_into = "<leader>di Step Into"
+let g:WhichKeyDesc_debug_step_over = "<leader>do Step Over"
+let g:WhichKeyDesc_debug_resume = "<leader>dr Resume Debugging"
+let g:WhichKeyDesc_debug_evaluate_expression = "<leader>dR Evaluate Expression"
+let g:WhichKeyDesc_debug_activate_tool_window = "<leader>dt Activate Debug Tool Window"
+```
+- `<leader>dx` Starts debugging the currently selected file or run configuration, launching the debugger with the specified settings.
+- `<leader>dc` Starts debugging in the context of the currently selected file or editor, allowing you to debug specific sections of code without reconfiguring the debugger.
+- `<leader>dv` Opens the "View Breakpoints" dialog, showing a list of all breakpoints set in your code, making it easy to manage and review them.
+- `<leader>de` Allows you to edit the properties of a selected breakpoint, such as conditions or actions to be performed when the breakpoint is hit.
+- `<leader>dm` Mutes all breakpoints, temporarily disabling them without removing them, useful for focusing on specific parts of your code without being interrupted by breakpoints.
+- `<leader>dt` Toggles a breakpoint at the current line in the editor, allowing you to quickly set or remove breakpoints while debugging.
+- `<leader>dC` Runs the debugger up to the cursor's current position, allowing you to skip over code and focus on specific parts of your program.
+- `<leader>di` Steps into the next function or method call in the debugger, allowing you to dive deeper into the execution flow of your code.
+- `<leader>do` Steps over the current line of code, executing it without entering any function calls, useful for moving through your code line by line.
+- `<leader>dr` Resumes normal execution of the program, continuing from the current breakpoint or pause point until the next breakpoint or program end.
+- `<leader>dR` Opens the "Evaluate Expression" dialog, allowing you to inspect or evaluate expressions while debugging to understand the state of your program.
+- `<leader>dt` Activates the Debug Tool Window, bringing up the debugging interface where you can view variables, stack traces, and other debugging information.
