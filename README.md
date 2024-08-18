@@ -150,13 +150,9 @@ nnoremap <C-j> <C-w>j
 ```
 nmap <C-i> <Action>(Back)
 nmap <C-o> <Action>(Forward)
-nmap <C-m> <Action>(ShowPopupMenu)
-nmap <C-S-m> <Action>(ToolWindowsGroup)
 ```
 - `<C-i> (Ctrl + i)` Acts like the back button in the IDE, taking you to the previous location in the code.
 - `<C-o> (Ctrl + o)` Acts like the forward button, taking you to the next location in the code after using the back action.
-- `<C-m> (Ctrl + m)` Opens the popup menu in the IDE, allowing you to quickly access various actions.
-- `<C-S-m> (Ctrl + Shift + m)` Opens the Tool Windows group, helping you manage and access different tool windows within the IDE.
 
 ### Jump Between Methods
 ```
@@ -173,6 +169,14 @@ vnoremap > >gv
 ```
 - `<` Decreases the indentation of the selected block of code and keeps the selection active for further adjustments.
 - `>` Increases the indentation of the selected block of code and keeps the selection active for further adjustments.
+
+### IDE Interaction
+```
+nmap <C-m> <Action>(ShowPopupMenu)
+nmap <C-S-m> <Action>(ToolWindowsGroup)
+```
+- `<C-m> (Ctrl + m)` Opens the popup menu in the IDE, allowing you to quickly access various actions.
+- `<C-S-m> (Ctrl + Shift + m)` Opens the Tool Windows group, helping you manage and access different tool windows within the IDE.
 
 ### Clear Search Highlighting
 ```
