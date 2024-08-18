@@ -33,24 +33,24 @@ set ideastatusicon=gray
 set exchange
 set commentary
 set ReplaceWithRegister
-set textobj-entire
-set indent-object
 set surround
-set highlightedyank
 set nerdtree
 
-" Highlighted Search
+" Searching Plugins
 set sneak
+set easymotion
+let g:EasyMotion_override_acejump = 0
+
+" Highlighting Plugins
+set highlightedyank
 set quickscope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
-" Argument Object
+" Object Plugins
+set textobj-entire
+set indent-object
 set argtextobj
 let g:argtextobj_pairs="[:],(:),<:>"
-
-" Easymotion settings
-set easymotion
-let g:EasyMotion_override_acejump = 0
 
 " Which-key settings
 set which-key
