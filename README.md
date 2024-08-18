@@ -473,3 +473,30 @@ let g:WhichKeyDesc_language_generate = "<leader>lG Generate"
 - `<leader>lR` Reformats the selected code or entire file according to the code style settings, improving readability and consistency.
 - `<leader>lI` Inspects the selected code or file for potential issues, offering suggestions for code improvements and optimizations.
 - `<leader>lG` Opens the "Generate" menu, providing options to automatically generate code such as getters, setters, constructors, or other boilerplate code.
+
+### Bookmark Management Commands
+These leader key mappings help you manage and navigate bookmarks within your JetBrains IDE. Bookmarks are useful for marking important sections of code, making it easier to return to them later.
+```
+nmap <leader>bm <Action>(Bookmarks)
+nmap <leader>bs <Action>(ShowBookmarks)
+nmap <leader>bt <Action>(ActivateBookmarksToolWindow)
+nmap <leader>bb <Action>(ToggleBookmark)
+nmap <leader>be <Action>(EditBookmark)
+nmap <leader>bp <Action>(GotoPreviousBookmark)
+nmap <leader>bn <Action>(GotoNextBookmark)
+let g:WhichKeyDesc_bookmarks = "<leader>b Bookmarks"
+let g:WhichKeyDesc_bookmarks_menu = "<leader>bm Bookmark Menu"
+let g:WhichKeyDesc_bookmarks_show = "<leader>bs Show Bookmarks"
+let g:WhichKeyDesc_bookmarks_tool = "<leader>bt Bookmark Tool"
+let g:WhichKeyDesc_bookmarks_toggle_bookmark = "<leader>bb Toggle Bookmark"
+let g:WhichKeyDesc_bookmarks_edit = "<leader>be Edit Bookmark"
+let g:WhichKeyDesc_bookmarks_prev = "<leader>bp Previous Bookmark"
+let g:WhichKeyDesc_bookmarks_next = "<leader>bn Next Bookmark"
+```
+- `<leader>bm` Opens the "Bookmarks" menu or dialog, allowing you to view and manage all bookmarks set in your project.
+- `<leader>bs` Displays a list of all bookmarks within the current file or project, making it easy to review and navigate through them.
+- `<leader>bt` Activates the Bookmarks Tool Window, providing a dedicated interface to manage and navigate your bookmarks.
+- `<leader>bb` Toggles a bookmark at the current line in the editor, allowing you to quickly mark or unmark important sections of code.
+- `<leader>be` Opens the "Edit Bookmark" dialog, letting you modify the details or description of a selected bookmark.
+- `<leader>bp` Jumps to the previous bookmark in the current file or project, helping you navigate to earlier marked locations.
+- `<leader>bn` Jumps to the next bookmark in the current file or project, allowing you to quickly move to subsequent marked locations.
