@@ -293,6 +293,7 @@ let g:WhichKeyDesc_tabs_close_all_unpinned = "<leader>tP Close All Unpinned Tabs
 - `<leader>tP` Closes all unpinned editor tabs, keeping only the pinned ones open. This is useful for cleaning up your workspace without losing important tabs.
 
 ### Display Mode Commands
+This set of leader key mappings provides quick access to various display and distraction-free modes in your JetBrains IDE. These commands help you focus on your work by adjusting the IDE’s interface.
 ```
 map <leader>Dd <action>(ToggleDistractionFreeMode)
 map <leader>Dz <action>(ToggleZenMode)
@@ -306,3 +307,46 @@ let g:WhichKeyDesc_fullscreen = "<leader>Df Toggle full screen"
 - `<leader>Dz` Toggles Zen Mode, which typically includes a more focused view with minimal distractions, combining full-screen and distraction-free features.
 - `<leader>Df` Toggles Full-Screen Mode, which maximizes the editor window to cover the entire screen, hiding other applications or windows for a focused work environment.
 
+### File Management and Navigation Commands
+```
+nmap <leader>fg <Action>(GotoFile)
+nmap <leader>fr <Action>(RecentFiles)
+nmap <leader>fc <Action>(FindInPath)
+nmap <leader>fl <Action>(RecentLocations)
+nmap <leader>fs <Action>(NewScratchFile)
+nmap <leader>fe :NERDTreeToggle<CR>
+nmap <leader>fo <Action>(OpenFile)
+nmap <leader>fy <Action>(CopyAbsolutePath)
+nmap <leader>fp <Action>(ManageRecentProjects)
+nmap <leader>fh <Action>(LocalHistory.ShowHistory)
+nmap <leader>ff <Action>(ShowFilePath)
+nmap <leader>fi <Action>(SelectIn)
+nmap <leader>fp <Action>(ReplaceInPath)
+let g:WhichKeyDesc_file_opt = "<leader>f File navigation"
+let g:WhichKeyDesc_file_opt_goto_file = "<leader>fg Go To File"
+let g:WhichKeyDesc_file_opt_goto_content = "<leader>fc Find In Files"
+let g:WhichKeyDesc_file_opt_show_recent_files = "<leader>fr Recent Files"
+let g:WhichKeyDesc_file_opt_show_recent_locations = "<leader>fl Recent Locations"
+let g:WhichKeyDesc_file_opt_new_scratch_file = "<leader>fs New Scratch File"
+let g:WhichKeyDesc_file_opt_toggle_nerdtree = "<leader>fe Toggle NERDTree"
+let g:WhichKeyDesc_file_opt_open_file = "<leader>fo Open File"
+let g:WhichKeyDesc_file_opt_copy_path = "<leader>fy Copy Absolute Path"
+let g:WhichKeyDesc_file_opt_recent_projects = "<leader>fp Manage Recent Projects"
+let g:WhichKeyDesc_file_opt_history = "<leader>fh Show Local History"
+let g:WhichKeyDesc_file_opt_show_path = "<leader>ff Show File Path"
+let g:WhichKeyDesc_file_opt_select_in = "<leader>fi Select In"
+let g:WhichKeyDesc_file_opt_replace_in_path = "<leader>fp Replace In Path"
+```
+- `<leader>fg` Opens the "Goto File" dialog, allowing you to quickly navigate to any file within your project by typing part of its name.
+- `<leader>fr` Opens a list of recent files, making it easy to reopen files you’ve worked on recently.
+- `<leader>fc` Opens the "Find in Path" dialog, enabling you to search for text or code within a specific directory or across your entire project.
+- `<leader>fl` Opens a list of recent locations in the code, allowing you to quickly jump back to recent positions within files.
+- `<leader>fs` Creates a new scratch file, which is a temporary file you can use for quick notes or testing code snippets.
+- `<leader>fe` Toggles the NERDTree file explorer panel, which provides a tree view of your project's directory structure.
+- `<leader>fo` Opens the file selection dialog, allowing you to open files from your file system directly.
+- `<leader>fy` Copies the absolute path of the currently focused file to the clipboard.
+- `<leader>fp` Opens a list of recent projects, letting you quickly switch between projects you’ve worked on recently.
+- `<leader>fh` Displays the local history for the currently open file, showing previous versions and changes made over time.
+- `<leader>ff` Shows the file path of the currently open file, often used to quickly view the file's location within the project or filesystem.
+- `<leader>fi` Opens the "Select In" dialog, allowing you to view and select the current file in various views or tools, such as the project view.
+- `<leader>fp` Opens the "Replace in Path" dialog, enabling you to search and replace text across multiple files within a specified path.
