@@ -500,3 +500,24 @@ let g:WhichKeyDesc_bookmarks_next = "<leader>bn Next Bookmark"
 - `<leader>be` Opens the "Edit Bookmark" dialog, letting you modify the details or description of a selected bookmark.
 - `<leader>bp` Jumps to the previous bookmark in the current file or project, helping you navigate to earlier marked locations.
 - `<leader>bn` Jumps to the next bookmark in the current file or project, allowing you to quickly move to subsequent marked locations.
+
+### Code Navigation Commands
+These leader key mappings provide quick access to various code navigation features, helping you efficiently locate declarations, implementations, and related code elements.
+```
+nmap <leader>gd <Action>(GotoDeclaration)
+nmap <leader>go <Action>(GotoSuperMethod)
+nmap <leader>gD <Action>(GotoTypeDeclaration)
+nmap <leader>gi <Action>(GotoImplementation)
+nmap <leader>gT <Action>(GotoTest)
+let g:WhichKeyDesc_goto = "<leader>g Go To"
+let g:WhichKeyDesc_goto_declaration = "<leader>gd Go To Declaration"
+let g:WhichKeyDesc_goto_super_method = "<leader>go Go To Super Method"
+let g:WhichKeyDesc_goto_type_declaration = "<leader>gD Go To Type Declaration"
+let g:WhichKeyDesc_goto_implementation = "<leader>gi Go To Implementation"
+let g:WhichKeyDesc_goto_test = "<leader>gT Go To Test"
+```
+- `<leader>gd` Navigates to the declaration of the symbol under the cursor, such as a variable, function, or class. Useful for quickly finding where a symbol is originally defined.
+- `<leader>go` Jumps to the super method of the current method or class, allowing you to view and understand inherited functionality and base class implementations.
+- `<leader>gD` Navigates to the declaration of the type or class of the symbol under the cursor, helping you find the type definition or class implementation.
+- `<leader>gi` Moves to the implementation of the method or interface under the cursor, enabling you to see the actual code that defines the behavior of a method or interface.
+- `<leader>gT` Jumps to the related test for the code element under the cursor, facilitating the process of finding and running tests associated with the code.
