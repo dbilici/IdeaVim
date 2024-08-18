@@ -77,18 +77,23 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-k> <C-w>k
 nnoremap <C-j> <C-w>j
 
+" Navigation actions
+nmap <C-i> <Action>(Back)
+nmap <C-o> <Action>(Forward)
+
 " Jump between methods
 nmap [[ <Action>(MethodUp)
 nmap ]] <Action>(MethodDown)
 
-" Easy visual indentation
+" Visual indentation
 vnoremap < <gv
 vnoremap > >gv
 
-nmap <C-i> <Action>(Back)
-nmap <C-o> <Action>(Forward)
+" IDE interaction
 nmap <C-m> <Action>(ShowPopupMenu)
 nmap <C-S-m> <Action>(ToolWindowsGroup)
+
+" Clear Search Highlighitng
 nnoremap <C-[> :noh<return>
 
 
