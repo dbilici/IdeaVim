@@ -552,4 +552,17 @@ let g:WhichKeyDesc_search_text = "<leader>st Search Text"
 - `<leader>ss` Opens the "Goto Symbol" dialog, allowing you to search for and navigate to symbols (methods, variables, etc.) within the current file or project.
 - `<leader>st` Initiates a text search within the current file or project, allowing you to find occurrences of a text string.
 
-
+### Case Conversion Commands
+These leader key mappings provide convenient ways to convert text between different case styles, making it easier to format your code according to various conventions.
+- `<leader>cm` Opens the case conversion menu, allowing you to choose and apply different case styles to the selected text.
+- `<leader>cc` Converts the selected text to CamelCase, where each word is capitalized except the first one (e.g., exampleText).
+- `<leader>cp` Converts the selected text to PascalCase, where each word is capitalized, including the first one (e.g., ExampleText).
+- `<leader>cs` Converts the selected text to snake_case, where words are separated by underscores and all letters are lowercase (e.g., example_text).
+- `<leader>cS` Converts the selected text to SCREAMING_SNAKE_CASE, where words are separated by underscores and all letters are uppercase (e.g., EXAMPLE_TEXT).
+- `<leader>cl` Converts the selected text to lowercase (e.g., example text).
+- `<leader>cu` Converts the selected text to uppercase (e.g., EXAMPLE TEXT).
+- `<leader>c.` Converts the selected text to dot.case, where words are separated by dots and all letters are lowercase (e.g., example.text).
+- `<leader>cw` Converts the selected text to separate words format, where words are separated by spaces (e.g., example text).
+- `<leader>ct` Converts the selected text to Title Case, where each word is capitalized (e.g., Example Text).
+- `<leader>c-` Converts the selected text to dash-case, where words are separated by dashes and all letters are lowercase (e.g., example-text).
+- `<leader>cd` Converts the selected text to Sentence case, where only the first letter of the first word is capitalized (e.g., Example text).
