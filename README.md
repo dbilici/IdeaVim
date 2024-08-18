@@ -183,3 +183,46 @@ nmap <C-S-m> <Action>(ToolWindowsGroup)
 nnoremap <C-[> :noh<return>
 ```
 `<C-[> (Ctrl + [)` Clears any search highlighting in the current buffer, making the code easier to read after a search operation.
+
+
+## Leader Commands
+
+### EasyMotion
+```
+let g:WhichKeyDesc_easymotion = "<leader><leader> EasyMotion"
+```
+- `g:WhichKeyDesc_easymotion` This is a custom variable that defines the description for the EasyMotion leader command in the which-key plugin.
+- `"<leader><leader> EasyMotion"` This indicates that pressing <Space><Space> will activate EasyMotion. This is a mnemonic mapping where double pressing the leader key triggers EasyMotion, making it easy to remember and access.
+
+### Information Commands
+This section provides a set of leader key mappings focused on retrieving various types of information in your JetBrains IDE. Each command is designed to quickly access important details related to your code.
+```
+nmap <leader>ie <action>(ShowErrorDescription)
+nmap <leader>it <action>(ExpressionTypeInfo)
+nmap <leader>ip <action>(ParameterInfo)
+nmap <leader>ij <action>(QuickJavaDoc)
+nmap <leader>if <action>(FileStructurePopup)
+nmap <leader>iU <action>(ShowUmlDiagram)
+nmap <leader>ih <action>(CallHierarchy)
+nmap <leader>iu <action>(ShowUsages)
+nmap <leader>im <action>(MethodHierarchy)
+let g:WhichKeyDesc_info = "<leader>i Information"
+let g:WhichKeyDesc_info_error = "<leader>ie Error Description"
+let g:WhichKeyDesc_info_type = "<leader>it Expression Type"
+let g:WhichKeyDesc_info_parameter = "<leader>ip Parameter Info"
+let g:WhichKeyDesc_info_javadoc = "<leader>ij Java Doc"
+let g:WhichKeyDesc_info_file_structure = "<leader>if File Structure"
+let g:WhichKeyDesc_info_uml_diagram = "<leader>iU UML Diagram"
+let g:WhichKeyDesc_info_call_hierarchy = "<leader>ih Call Hierarchy"
+let g:WhichKeyDesc_info_show_usages = "<leader>iu Usages"
+let g:WhichKeyDesc_info_method_hierarchy = "<leader>im Method Hierarchy"
+```
+- `<leader>ie` Shows the error description of the current issue under the cursor. Useful for quickly identifying and understanding errors in your code.
+- `<leader>it` Displays the type information of the expression under the cursor. This is particularly helpful when working with languages where type inference is common.
+- `<leader>ip` Provides information about the parameters of a function or method, showing the expected arguments and their types.
+- `<leader>ij` Opens the Quick JavaDoc window, which shows the documentation for the symbol under the cursor. This is useful for understanding the purpose and usage of methods, classes, and other elements in your code.
+- `<leader>if` Displays the file structure popup, allowing you to quickly navigate through the structure of the current file, such as methods, variables, and classes.
+- `<leader>iU` Opens the UML diagram for the current class or file. This is particularly helpful for visualizing class relationships and understanding the overall structure of the code.
+- `<leader>ih` Displays the call hierarchy, showing how the current method is called and where it is used. This is useful for tracking dependencies and understanding the flow of the program.
+- `<leader>iu` Lists all the usages of the current symbol, helping you find where a variable, method, or class is used across your project.
+- `<leader>im` Displays the method hierarchy, showing how methods relate to each other, including overrides and implementations. This is useful for navigating complex inheritance structures.
