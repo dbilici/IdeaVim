@@ -250,3 +250,44 @@ let g:WhichKeyDesc_window_split_forward = "<leader>wf Forward split"
 - `<leader>wm` Moves the current editor tab to the opposite tab group (i.e., from the left to the right group or vice versa). This is useful for organizing your workspace.
 - `<leader>wb` Navigates back to the previous editor split or pane. Similar to the back button in a browser, it returns you to the last active split.
 - `<leader>wf` Navigates forward to the next editor split or pane. This is the counterpart to the back action and moves you forward through your split history.
+
+### Tab Management Commands
+This section provides leader key mappings for managing editor tabs within your JetBrains IDE. These commands allow you to pin tabs, navigate between specific tabs, and close tabs in various ways.
+```
+nmap <leader>tp <Action>(PinActiveEditorTab)
+nmap <leader>tg1 <Action>(GoToTab1)
+nmap <leader>tg2 <Action>(GoToTab2)
+nmap <leader>tg3 <Action>(GoToTab3)
+nmap <leader>tg4 <Action>(GoToTab4)
+nmap <leader>tg5 <Action>(GoToTab5)
+nmap <leader>tg6 <Action>(GoToTab6)
+nmap <leader>tg7 <Action>(GoToTab7)
+nmap <leader>tg8 <Action>(GoToTab8)
+nmap <leader>tg9 <Action>(GoToTab9)
+nmap <leader>tx <Action>(CloseContent)
+nmap <leader>tX <Action>(CloseAllEditors)
+nmap <leader>tA <Action>(CloseAllEditorsButActive)
+nmap <leader>tP <Action>(CloseAllUnpinnedEditors)
+let g:WhichKeyDesc_tabs = "<leader>t Tabs"
+let g:WhichKeyDesc_tabs_pin = "<leader>tp Pin Active Tab"
+let g:WhichKeyDesc_tabs_go_to = "<leader>tg Go to Tab"
+let g:WhichKeyDesc_tabs_go_to_1 = "<leader>tg1 Go to Tab 1"
+let g:WhichKeyDesc_tabs_go_to_2 = "<leader>tg2 Go to Tab 2"
+let g:WhichKeyDesc_tabs_go_to_3 = "<leader>tg3 Go to Tab 3"
+let g:WhichKeyDesc_tabs_go_to_4 = "<leader>tg4 Go to Tab 4"
+let g:WhichKeyDesc_tabs_go_to_5 = "<leader>tg5 Go to Tab 5"
+let g:WhichKeyDesc_tabs_go_to_6 = "<leader>tg6 Go to Tab 6"
+let g:WhichKeyDesc_tabs_go_to_7 = "<leader>tg7 Go to Tab 7"
+let g:WhichKeyDesc_tabs_go_to_8 = "<leader>tg8 Go to Tab 8"
+let g:WhichKeyDesc_tabs_go_to_9 = "<leader>tg9 Go to Tab 9"
+let g:WhichKeyDesc_tabs_close = "<leader>tx Close Current Tab"
+let g:WhichKeyDesc_tabs_close_all = "<leader>tX Close All Tabs"
+let g:WhichKeyDesc_tabs_close_all_but_active = "<leader>tA Close All Tabs But Active"
+let g:WhichKeyDesc_tabs_close_all_unpinned = "<leader>tP Close All Unpinned Tabs"
+```
+- `<leader>tp` Pins the currently active editor tab, ensuring that it stays open even when you close other tabs or open new ones.
+- `<leader>tg<number>` Switches to the tab corresponding to `<number>`. For example, `<leader>tg1` switches to the first tab, `<leader>tg2` to the second tab, and so on, up to the ninth tab with `<leader>tg9`.
+- `<leader>tx` Closes the current editor tab.
+- `<leader>tX` Closes all open editor tabs.
+- `<leader>tA` Closes all editor tabs except the one that is currently active, helping you focus on your current work.
+- `<leader>tP` Closes all unpinned editor tabs, keeping only the pinned ones open. This is useful for cleaning up your workspace without losing important tabs.
