@@ -122,3 +122,60 @@ let g:WhichKey_ShowTypedSequence = "false"
   - `let g:WhichKey_KeyStyle = "italic"` Styles the key bindings in italics, distinguishing them visually from other elements.
   - `let g:WhichKey_SortOrder = "by_key_prefix_first"` Organizes the popup items by key prefix first, making it easier to follow a logical sequence.
   - `let g:WhichKey_ShowTypedSequence = "false"` Disables the display of the typed key sequence in the popup, focusing on the available options instead.
+
+
+## Key Mappings
+
+### Tab Navigation
+```
+nmap <C-p> <Action>(PreviousTab)
+nmap <C-n> <Action>(NextTab)
+```
+- `<C-p> (Ctrl + p)` This mapping switches to the previous tab in your JetBrains IDE. It's a quick way to navigate back through your open tabs.
+- `<C-n> (Ctrl + n)` This mapping switches to the next tab in your JetBrains IDE. It allows you to move forward through your open tabs.
+
+### Pane Navigation
+```
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-k> <C-w>k
+nnoremap <C-j> <C-w>j
+```
+- `<C-h> (Ctrl + h)` Move to the pane to the left.
+- `<C-l> (Ctrl + l)` Move to the pane to the right.
+- `<C-k> (Ctrl + k)` Move to the pane above.
+- `<C-j> (Ctrl + j)` Move to the pane below.
+
+### Navigation Actions
+```
+nmap <C-i> <Action>(Back)
+nmap <C-o> <Action>(Forward)
+nmap <C-m> <Action>(ShowPopupMenu)
+nmap <C-S-m> <Action>(ToolWindowsGroup)
+```
+- `<C-i> (Ctrl + i)` Acts like the back button in the IDE, taking you to the previous location in the code.
+- `<C-o> (Ctrl + o)` Acts like the forward button, taking you to the next location in the code after using the back action.
+- `<C-m> (Ctrl + m)` Opens the popup menu in the IDE, allowing you to quickly access various actions.
+- `<C-S-m> (Ctrl + Shift + m)` Opens the Tool Windows group, helping you manage and access different tool windows within the IDE.
+
+### Jump Between Methods
+```
+nmap [[ <Action>(MethodUp)
+nmap ]] <Action>(MethodDown)
+```
+- `[[` Moves the cursor to the previous method in the code.
+- `]]` Moves the cursor to the next method in the code.
+
+### Visual Indentation
+```
+vnoremap < <gv
+vnoremap > >gv
+```
+- `<` Decreases the indentation of the selected block of code and keeps the selection active for further adjustments.
+- `>` Increases the indentation of the selected block of code and keeps the selection active for further adjustments.
+
+### Clear Search Highlighting
+```
+nnoremap <C-[> :noh<return>
+```
+`<C-[> (Ctrl + [)` Clears any search highlighting in the current buffer, making the code easier to read after a search operation.
