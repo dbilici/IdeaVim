@@ -308,6 +308,7 @@ let g:WhichKeyDesc_fullscreen = "<leader>Df Toggle full screen"
 - `<leader>Df` Toggles Full-Screen Mode, which maximizes the editor window to cover the entire screen, hiding other applications or windows for a focused work environment.
 
 ### File Management and Navigation Commands
+These leader key mappings help you efficiently manage files, access recent items, and perform various file-related actions within your JetBrains IDE.
 ```
 nmap <leader>fg <Action>(GotoFile)
 nmap <leader>fr <Action>(RecentFiles)
@@ -350,3 +351,33 @@ let g:WhichKeyDesc_file_opt_replace_in_path = "<leader>fp Replace In Path"
 - `<leader>ff` Shows the file path of the currently open file, often used to quickly view the file's location within the project or filesystem.
 - `<leader>fi` Opens the "Select In" dialog, allowing you to view and select the current file in various views or tools, such as the project view.
 - `<leader>fp` Opens the "Replace in Path" dialog, enabling you to search and replace text across multiple files within a specified path.
+
+# Run and Test Management Commands
+These leader key mappings provide quick access to various run and test-related actions in your JetBrains IDE. They help streamline the process of running, rerunning, and managing configurations for your code.
+```
+nmap <leader>rm <action>(RunMenu)
+nmap <leader>rn <action>(RunClass)
+nmap <leader>rc <Action>(ContextRun)
+nmap <leader>rr <action>(Rerun)
+nmap <leader>rt <Action>(RunTests)
+nmap <leader>rf <action>(RerunFailedTests)
+nmap <leader>rs <Action>(Stop)
+nmap <leader>rC <action>(ChooseRunConfiguration)
+let g:WhichKeyDesc_run = "<leader>r Run"
+let g:WhichKeyDesc_run_menu = "<leader>rm Run Menu"
+let g:WhichKeyDesc_run_class = "<leader>rn Run Class"
+let g:WhichKeyDesc_run_context = "<leader>rc Context Run"
+let g:WhichKeyDesc_run_rerun = "<leader>rr Rerun"
+let g:WhichKeyDesc_run_tests = "<leader>rt Run Tests"
+let g:WhichKeyDesc_run_failed = "<leader>rf Rerun Failed Tests"
+let g:WhichKeyDesc_run_stop = "<leader>rs Stop"
+let g:WhichKeyDesc_run_choose_configuration = "<leader>rC Choose Run Configuration"
+```
+- `<leader>rm` Opens the "Run Menu," allowing you to select and execute various run configurations or commands related to running your code.
+- `<leader>rn` Executes the currently selected class, typically used for running the main class in a Java project or similar environments.
+- `<leader>rc` Runs the code or tests in the context of the currently selected file or editor. Useful for quickly executing code without needing to configure run settings.
+- `<leader>rr` Reruns the last executed run configuration or command, useful for quickly testing changes without manually initiating the run process again.
+- `<leader>rt` Runs all tests in the project or selected scope, allowing you to execute and verify the correctness of your code.
+- `<leader>rf` Reruns only the tests that failed during the previous test run, helping you focus on fixing issues without running all tests again.
+- `<leader>rs` Stops the currently running process or test, allowing you to halt execution if needed.
+- `<leader>rC` Opens the "Choose Run Configuration" dialog, letting you select or switch between different run configurations for your project.
