@@ -291,3 +291,18 @@ let g:WhichKeyDesc_tabs_close_all_unpinned = "<leader>tP Close All Unpinned Tabs
 - `<leader>tX` Closes all open editor tabs.
 - `<leader>tA` Closes all editor tabs except the one that is currently active, helping you focus on your current work.
 - `<leader>tP` Closes all unpinned editor tabs, keeping only the pinned ones open. This is useful for cleaning up your workspace without losing important tabs.
+
+### Display Mode Commands
+```
+map <leader>Dd <action>(ToggleDistractionFreeMode)
+map <leader>Dz <action>(ToggleZenMode)
+map <leader>Df <action>(ToggleFullScreen)
+let g:WhichKeyDesc_display = "<leader>D Display options"
+let g:WhichKeyDesc_zen_mode = "<leader>Dz Toggle Zen mode"
+let g:WhichKeyDesc_df_mode = "<leader>Dd Toggle Distraction-Free mode"
+let g:WhichKeyDesc_fullscreen = "<leader>Df Toggle full screen"
+```
+- `<leader>Dd` Toggles Distraction-Free Mode, which hides all tool windows, menus, and other interface elements to give you a clean, uninterrupted workspace.
+- `<leader>Dz` Toggles Zen Mode, which typically includes a more focused view with minimal distractions, combining full-screen and distraction-free features.
+- `<leader>Df` Toggles Full-Screen Mode, which maximizes the editor window to cover the entire screen, hiding other applications or windows for a focused work environment.
+
