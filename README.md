@@ -423,3 +423,53 @@ let g:WhichKeyDesc_debug_activate_tool_window = "<leader>dt Activate Debug Tool 
 - `<leader>dr` Resumes normal execution of the program, continuing from the current breakpoint or pause point until the next breakpoint or program end.
 - `<leader>dR` Opens the "Evaluate Expression" dialog, allowing you to inspect or evaluate expressions while debugging to understand the state of your program.
 - `<leader>dt` Activates the Debug Tool Window, bringing up the debugging interface where you can view variables, stack traces, and other debugging information.
+
+### Refactoring and Code Impromenet Commands
+These leader key mappings provide quick access to various refactoring and code improvement features in your JetBrains IDE. They help you streamline code changes, improve code quality, and perform common refactoring tasks efficiently.
+```
+nmap <leader>ll <Action>(Refactorings.QuickListPopupAction)
+nmap <leader>lr <Action>(RenameElement)
+nmap <leader>lc <Action>(ChangeSignature)
+nmap <leader>lv <Action>(IntroduceVariable)
+nmap <leader>li <Action>(Inline)
+nmap <leader>lf <Action>(IntroduceField)
+nmap <leader>lm <Action>(ExtractMethod)
+nmap <leader>lC <Action>(IntroduceConstant)
+nmap <leader>lp <Action>(IntroduceParameter)
+nmap <leader>lo <Action>(IntroduceParameterObject)
+nmap <leader>le <Action>(EncapsulateFields)
+nmap <leader>la <Action>(ShowIntentionActions)
+nmap <leader>lR <Action>(ReformatCode)
+nmap <leader>lI <Action>(InspectCode)
+nmap <leader>lG <Action>(Generate)
+let g:WhichKeyDesc_language = "<leader>l Language"
+let g:WhichKeyDesc_language_menu = "<leader>ll Quick List"
+let g:WhichKeyDesc_language_rename = "<leader>lr Rename"
+let g:WhichKeyDesc_language_change_signature = "<leader>lc Change Signature"
+let g:WhichKeyDesc_language_inline_variable = "<leader>li Inline"
+let g:WhichKeyDesc_language_introduce_field = "<leader>lf Introduce Field"
+let g:WhichKeyDesc_language_extract_method = "<leader>lm Extract Method"
+let g:WhichKeyDesc_language_introduce_constant = "<leader>lC Introduce Constant"
+let g:WhichKeyDesc_language_introduce_parameter = "<leader>lp Introduce Parameter"
+let g:WhichKeyDesc_language_introduce_param_object = "<leader>lo Introduce Parameter Object"
+let g:WhichKeyDesc_language_encapsulate = "<leader>le Encapsulate Fields"
+let g:WhichKeyDesc_language_show_intention_actions = "<leader>la Show Intention Actions"
+let g:WhichKeyDesc_language_reformat_code = "<leader>lR Reformat Code"
+let g:WhichKeyDesc_language_inspect_code = "<leader>lI Inspect Code"
+let g:WhichKeyDesc_language_generate = "<leader>lG Generate"
+```
+- `<leader>ll` Opens the Quick Refactorings List, providing a menu of available refactoring actions you can apply to the current code element.
+- `<leader>lr` Renames the selected code element (e.g., variable, method, class), updating all occurrences of the element throughout your codebase.
+- `<leader>lc` Changes the signature of a method or function, allowing you to modify its parameters or return type and automatically update all references.
+- `<leader>lv` Introduces a new variable for the selected expression or value, simplifying complex expressions and improving code readability.
+- `<leader>li` Inlines the selected code element (e.g., variable or method), replacing its occurrences with its value or implementation directly in the code.
+- `<leader>lf` Introduces a new field in the current class or object, helping to manage and organize data within your classes.
+- `<leader>lm` Extracts a selected block of code into a new method, improving code modularity and reusability.
+- `<leader>lC` Introduces a new constant for a selected value or expression, making it easier to manage and update constant values in your code.
+- `<leader>lp` Introduces a new parameter to a method or function, allowing you to modify its signature and update all references accordingly.
+- `<leader>lo` Introduces a parameter object for a method with multiple parameters, grouping them into a single object to simplify method signatures.
+- `<leader>le` Encapsulates fields by creating getter and setter methods, improving data encapsulation and access control.
+- `<leader>la` Displays a list of intention actions available for the current code element, offering quick fixes and code improvements.
+- `<leader>lR` Reformats the selected code or entire file according to the code style settings, improving readability and consistency.
+- `<leader>lI` Inspects the selected code or file for potential issues, offering suggestions for code improvements and optimizations.
+- `<leader>lG` Opens the "Generate" menu, providing options to automatically generate code such as getters, setters, constructors, or other boilerplate code.
