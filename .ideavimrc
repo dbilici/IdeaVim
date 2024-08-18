@@ -11,12 +11,16 @@ set incsearch
 set hlsearch
 set visualbell
 
-" Use system clipboard
+" Clipboard Integration
 set clipboard+=unnamed
+
+" Leader Key
 let mapleader="\<space>"
+
+"Default Behavior
 set gdefault
 
-" ideavim settings
+" iIdeaVim Specific Settings
 set ideajoin
 set ideamarks
 set idearefactormode=normal
