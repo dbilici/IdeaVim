@@ -44,3 +44,16 @@ set gdefault
 ```
 `set gdefault` Automatically applies the global default flag to substitution commands, simplifying text replacement tasks.
 
+
+### IdeaVim Specific Settings
+```
+set ideajoin
+set ideamarks
+set idearefactormode=normal
+set ideastatusicon=gray
+```
+- `set ideajoin` Enables the join command specific to IdeaVim, which helps in joining lines in the editor.
+- `set ideamarks` Activates IdeaVim-specific mark features, integrating Vim marks with the IDE’s navigation tools.
+- `set idearefactormode=normal` Sets the default refactor mode to normal, controlling how refactor operations behave.
+- `set ideastatusicon=gray` Configures the status icon color for IdeaVim, providing a visual indicator in the IDE.
+
