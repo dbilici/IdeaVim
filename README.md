@@ -566,3 +566,46 @@ These leader key mappings provide convenient ways to convert text between differ
 - `<leader>ct` Converts the selected text to Title Case, where each word is capitalized (e.g., Example Text).
 - `<leader>c-` Converts the selected text to dash-case, where words are separated by dashes and all letters are lowercase (e.g., example-text).
 - `<leader>cd` Converts the selected text to Sentence case, where only the first letter of the first word is capitalized (e.g., Example text).
+
+### Version Control Commands
+These leader key mappings streamline common version control operations, allowing you to manage and interact with your version control system efficiently.
+```
+nmap <leader>Gc <Action>(Vcs.Show.Local.Changes)
+nmap <leader>Gb <Action>(Git.Branches)
+nmap <leader>Gf <Action>(Git.Fetch)
+nmap <leader>Gp <Action>(Vcs.Push)
+nmap <leader>GP <Action>(Git.Commit.And.Push.Executor)
+nmap <leader>Go <Action>(Github.View.Pull.Request)
+nmap <leader>Gm <Action>(VcsGroups)
+nmap <leader>Gg <Action>(CheckinProject)
+nmap <leader>Ga <Action>(Annotate)
+nmap <leader>Gt <Action>(ActivateVersionControlToolWindow)
+nmap <leader>Gr <Action>(Vcs.RollbackChangedLines)
+nmap <leader>Gu <Action>(Vcs.UpdateProject)
+let g:WhichKeyDesc_git = "<leader>G Git"
+let g:WhichKeyDesc_git_checkin = "<leader>Gg Checkin"
+let g:WhichKeyDesc_git_branches = "<leader>Gb Branches"
+let g:WhichKeyDesc_git_push = "<leader>Gp Push"
+let g:WhichKeyDesc_git_commit_and_push = "<leader>GP Commit & Push"
+let g:WhichKeyDesc_git_menu = "<leader>Gm Menu"
+let g:WhichKeyDesc_git_fetch = "<leader>Gf Fetch"
+let g:WhichKeyDesc_git_annotate = "<leader>Ga Annotate"
+let g:WhichKeyDesc_git_log = "<leader>Gl Log"
+let g:WhichKeyDesc_git_tool = "<leader>Gt Tool"
+let g:WhichKeyDesc_git_rollback_changed_lines = "<leader>Gr Rollback"
+let g:WhichKeyDesc_git_open_pull_requests = "<leader>Go Open Pull Requests"
+let g:WhichKeyDesc_git_local_changes = "<leader>Gc Show Local Changes"
+let g:WhichKeyDesc_git_update_project = "<leader>Gu Update Project"
+```
+- `<leader>Gc` Displays local changes in your version control system, showing modifications that haven’t been committed yet.
+- `<leader>Gb` Opens the Git branches menu, allowing you to view and manage branches in your repository.
+- `<leader>Gf` Fetches changes from the remote repository, updating your local repository with the latest changes without merging them.
+- `<leader>Gp` Pushes your local commits to the remote repository, making your changes available to others.
+- `<leader>GP` Commits your local changes and pushes them to the remote repository in one action, streamlining the commit and push process.
+- `<leader>Go` Opens the pull request view on GitHub, allowing you to review and manage pull requests.
+- `<leader>Gm` Opens the VCS groups view, helping you organize and manage your version control groups.
+- `<leader>Gg` Checks in your project, committing changes and managing version control directly.
+- `<leader>Ga` Annotates the code, showing the history of changes for each line, including who made the changes and when.
+- `<leader>Gt` Opens the version control tool window, providing an overview of your version control operations and status.
+- `<leader>Gr` Rolls back changes to specific lines, allowing you to revert modifications without affecting other parts of the code.
+- `<leader>Gu` Updates your project with the latest changes from the version control system, ensuring your local copy is synchronized with the remote repository.
