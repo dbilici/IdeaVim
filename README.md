@@ -521,3 +521,35 @@ let g:WhichKeyDesc_goto_test = "<leader>gT Go To Test"
 - `<leader>gD` Navigates to the declaration of the type or class of the symbol under the cursor, helping you find the type definition or class implementation.
 - `<leader>gi` Moves to the implementation of the method or interface under the cursor, enabling you to see the actual code that defines the behavior of a method or interface.
 - `<leader>gT` Jumps to the related test for the code element under the cursor, facilitating the process of finding and running tests associated with the code.
+
+### Search and Navigation Commands
+These leader key mappings provide efficient ways to search for and navigate to various elements within your codebase, enhancing your productivity and code exploration.
+```
+nmap <leader>sS <action>(SearchEverywhere)
+nmap <leader>su <Action>(FindUsages)
+nmap <leader>sn <Action>(ShowNavBar)
+nmap <leader>sa <Action>(GotoAction)
+nmap <leader>sc <Action>(GotoClass)
+nmap <leader>sf <Action>(GotoFile)
+nmap <leader>ss <Action>(GotoSymbol)
+nmap <leader>st <Action>(TextSearchAction)
+let g:WhichKeyDesc_search = "<leader>s Search"
+let g:WhichKeyDesc_search_everywhere = "<leader>sS Search Everywhere"
+let g:WhichKeyDesc_search_usages = "<leader>su Find Usages"
+let g:WhichKeyDesc_search_nav_bar = "<leader>sn Show Nav Bar"
+let g:WhichKeyDesc_search_action = "<leader>sa Search Action"
+let g:WhichKeyDesc_search_class = "<leader>sc Search Class"
+let g:WhichKeyDesc_search_file = "<leader>sf Search File"
+let g:WhichKeyDesc_search_symbol = "<leader>ss Search Symbol"
+let g:WhichKeyDesc_search_text = "<leader>st Search Text"
+```
+- `<leader>sS` Opens the "Search Everywhere" dialog, allowing you to search across the entire project for files, classes, symbols, or text, providing a comprehensive search tool.
+- `<leader>su` Finds all usages of the symbol under the cursor, helping you see where and how a particular element (variable, method, etc.) is used throughout your project.
+- `<leader>sn` Displays the navigation bar, providing a quick way to navigate through files, classes, and methods within your project.
+- `<leader>sa` Opens the "Goto Action" dialog, allowing you to search for and navigate to specific actions or commands within the IDE.
+- `<leader>sc` Navigates to a class by opening the "Goto Class" dialog, which helps you quickly find and jump to the definition of a class.
+- `<leader>sf` Opens the "Goto File" dialog, enabling you to search for and open files within your project quickly.
+- `<leader>ss` Opens the "Goto Symbol" dialog, allowing you to search for and navigate to symbols (methods, variables, etc.) within the current file or project.
+- `<leader>st` Initiates a text search within the current file or project, allowing you to find occurrences of a text string.
+
+
