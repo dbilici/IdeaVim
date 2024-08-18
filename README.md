@@ -22,3 +22,25 @@ set visualbell
 - `set incsearch` Enables incremental search, highlighting matches as you type, which improves search efficiency.
 - `set hlsearch` Highlights all matches of the search pattern, making it easier to locate search results in the text.
 - `set visualbell` Uses a visual flash instead of an audible bell to indicate errors or alerts, reducing distraction.
+
+
+### Clipboard Integration
+```
+set clipboard+=unnamed
+```
+`set clipboard+=unnamed` Allows Vim to use the system clipboard for copy and paste operations, facilitating seamless interaction with other applications.
+
+
+### Leader Key
+```
+let mapleader="\<space>"
+```
+`let mapleader="\<space>"` Sets the space key as the leader key, which is used as a prefix for custom key mappings, making them more accessible.
+
+
+### Default Behavior
+```
+set gdefault
+```
+`set gdefault` Automatically applies the global default flag to substitution commands, simplifying text replacement tasks.
+
