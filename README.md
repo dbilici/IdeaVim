@@ -226,3 +226,27 @@ let g:WhichKeyDesc_info_method_hierarchy = "<leader>im Method Hierarchy"
 - `<leader>ih` Displays the call hierarchy, showing how the current method is called and where it is used. This is useful for tracking dependencies and understanding the flow of the program.
 - `<leader>iu` Lists all the usages of the current symbol, helping you find where a variable, method, or class is used across your project.
 - `<leader>im` Displays the method hierarchy, showing how methods relate to each other, including overrides and implementations. This is useful for navigating complex inheritance structures.
+
+### Window Split Commands
+This section provides leader key mappings for managing and navigating window splits within your JetBrains IDE. These commands allow you to split the editor window vertically or horizontally, unsplit windows, and manage window groups.
+```
+nmap <leader>wv <action>(SplitVertically)
+nmap <leader>wh <action>(SplitHorizontally)
+nmap <leader>wu <action>(Unsplit)
+nmap <leader>wm <action>(MoveEditorToOppositeTabGroup)
+nmap <leader>wb <action>(Back)
+nmap <leader>wf <action>(Forward)
+let g:WhichKeyDesc_window = "<leader>w Window splits"
+let g:WhichKeyDesc_window_split_vertically = "<leader>wv Split vertically"
+let g:WhichKeyDesc_window_split_horizontally = "<leader>wh Split horizontally"
+let g:WhichKeyDesc_window_split_unsplit = "<leader>wu Unsplit"
+let g:WhichKeyDesc_window_split_move_editor = "<leader>wm Move editor to opposite tab group"
+let g:WhichKeyDesc_window_split_back = "<leader>wb Back split"
+let g:WhichKeyDesc_window_split_forward = "<leader>wf Forward split"
+```
+- `<leader>wv` Splits the current window vertically, creating a new editor pane to the right of the current one.
+- `<leader>wh` Splits the current window horizontally, creating a new editor pane below the current one.
+- `<leader>wu` Un-splits the current window, closing the split and returning to a single editor pane.
+- `<leader>wm` Moves the current editor tab to the opposite tab group (i.e., from the left to the right group or vice versa). This is useful for organizing your workspace.
+- `<leader>wb` Navigates back to the previous editor split or pane. Similar to the back button in a browser, it returns you to the last active split.
+- `<leader>wf` Navigates forward to the next editor split or pane. This is the counterpart to the back action and moves you forward through your split history.
