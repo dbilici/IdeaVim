@@ -1,4 +1,5 @@
 # IdeaVim Configuration
+For more information on configuring IdeaVim, you can read my [Medium article](https://medium.com/@dbilici/a-practical-ideavim-setup-for-intellij-idea-cf74222e7b45).
 ## Base Settings
 This section of the configuration covers the fundamental settings that establish the basic behavior and appearance of IdeaVim in your JetBrains IDE. Below is a description of each setting included in this part of the configuration.
 
