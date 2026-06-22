@@ -1,58 +1,68 @@
 "" ========================================================
-"" Base Settings
+"" IdeaVim configuration — single file (~/.ideavimrc)
+"" Loaded by all JetBrains IDEs (IntelliJ, PyCharm, WebStorm, ...).
 "" ========================================================
+
+let mapleader="\<space>"
+
+"" ========================================================
+"" Options
+"" Universal settings work in Vim/Neovim/IdeaVim alike.
+"" ========================================================
+
+" --- Universal ---
 set scrolloff=10
 set history=1000
 set number relativenumber
 set showmode
 set showcmd
-set smartcase
+set ignorecase          " required for smartcase to actually take effect
+set smartcase           " case-insensitive search until an uppercase letter is typed
 set incsearch
 set hlsearch
 set visualbell
-
-" Clipboard Integration
-set clipboard+=unnamed
-
-" Leader Key
-let mapleader="\<space>"
-
-"Default Behavior
 set gdefault
 
-" iIdeaVim Specific Settings
+" --- IDE-only ---
+" 'ideaput' adds native IntelliJ insertion on paste (multi-caret / template aware)
+set clipboard+=unnamed,ideaput
 set ideajoin
 set ideamarks
-set idearefactormode=normal
+set idearefactormode=keep
 set ideastatusicon=gray
-
-
 "" ========================================================
-"" Plugin Settings
+"" Plugins (IdeaVim emulations)
 "" ========================================================
+
+" General
 set exchange
 set commentary
 set ReplaceWithRegister
 set surround
 set nerdtree
 
-" Searching Plugins
-set sneak
+" Jumping / motions
+"  - easymotion (AceJump-backed) is the primary jump engine: <leader><leader>
+"  - quickscope passively highlights f/F/t/T targets (no keymaps, pure win)
+"  - vim-sneak was REMOVED: it overlapped easymotion and took over `s`/`S`.
+"    Want sneak-style `s{char}{char}` back, on one engine? Uncomment:
+"        map s <Plug>(easymotion-s2)
 set easymotion
 let g:EasyMotion_override_acejump = 0
-
-" Highlighting Plugins
-set highlightedyank
 set quickscope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
-" Object Plugins
+" Highlighting
+set highlightedyank
+
+" Text objects
 set textobj-entire
 set indent-object
 set argtextobj
 let g:argtextobj_pairs="[:],(:),<:>"
+set functextobj          " am = a method, aM = method incl. comments, im = inner body
 
-" Which-key settings
+" Which-key
 set which-key
 set notimeout
 let g:WhichKey_FontSize = 20
@@ -62,11 +72,16 @@ let g:WhichKey_PrefixStyle = "bold"
 let g:WhichKey_KeyStyle = "italic"
 let g:WhichKey_SortOrder = "by_key_prefix_first"
 let g:WhichKey_ShowTypedSequence = "false"
-
-
 "" ========================================================
-"" Key Mappings
+"" Key mappings (non-leader)
 "" ========================================================
+
+" Let IdeaVim win these in normal mode so pane navigation isn't swallowed.
+sethandler <C-h> n:vim
+sethandler <C-j> n:vim
+sethandler <C-k> n:vim
+sethandler <C-l> n:vim
+
 " Tab navigation
 nmap <C-p> <Action>(PreviousTab)
 nmap <C-n> <Action>(NextTab)
@@ -77,44 +92,83 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-k> <C-w>k
 nnoremap <C-j> <C-w>j
 
-" Navigation actions
-nmap <C-i> <Action>(Back)
-nmap <C-o> <Action>(Forward)
+" Jumplist navigation
+" NOTE: <C-i> is the SAME keycode as <Tab>. C-o -> Back and C-i (Tab) -> Forward
+" matches the native Vim jumplist direction.
+nmap <C-o> <Action>(Back)
+nmap <C-i> <Action>(Forward)
 
 " Jump between methods
 nmap [[ <Action>(MethodUp)
 nmap ]] <Action>(MethodDown)
 
-" Visual indentation
+" Visual indentation (keep selection)
 vnoremap < <gv
 vnoremap > >gv
 
-" IDE interaction
-nmap <C-m> <Action>(ShowPopupMenu)
+" LSP-style bare keys
+" (gd overrides native go-to-local-declaration; gi overrides native
+"  insert-at-last-position. Use `gi`'s native behavior via `` `^ `` if needed.)
+nmap K  <Action>(QuickJavaDoc)
+nmap gd <Action>(GotoDeclaration)
+nmap gi <Action>(GotoImplementation)
+nmap gr <Action>(FindUsages)
+nmap gy <Action>(GotoTypeDeclaration)
+
+" Multiple cursors (IDE multi-caret)
+" Alt mappings can be intercepted by the OS/keymap on some systems; remap if so.
+map <A-n> <Action>(SelectNextOccurrence)
+map <A-p> <Action>(UnselectPreviousOccurrence)
+map <A-a> <Action>(SelectAllOccurrences)
+
+" Semantic expand / shrink selection
+map <A-Up>   <Action>(EditorSelectWord)
+map <A-Down> <Action>(EditorUnSelectWord)
+
+" Move lines up / down
+nnoremap <A-j> <Action>(MoveLineDown)
+nnoremap <A-k> <Action>(MoveLineUp)
+
+" Tool windows popup
 nmap <C-S-m> <Action>(ToolWindowsGroup)
 
-" Clear Search Highlighitng
-nnoremap <C-[> :noh<return>
-
-
+" Clear search highlighting
+" Written as <Esc> on purpose (<C-[> is byte-identical to <Esc>).
+" If it ever clashes with which-key popup dismissal, move it to <leader>h.
+nnoremap <silent> <Esc> :nohlsearch<CR>
 "" ========================================================
-"" Leader Commands
+"" Leader commands (which-key driven)
 "" ========================================================
 
-" EasyMotion
+" EasyMotion (plugin default prefix)
 let g:WhichKeyDesc_easymotion = "<leader><leader> EasyMotion"
 
 
+" IdeaVim config: edit & reload
+nmap <leader>ve :e ~/.ideavimrc<CR>
+nmap <leader>vr <Action>(IdeaVim.ReloadVimRc.reload)
+let g:WhichKeyDesc_vim = "<leader>v IdeaVim"
+let g:WhichKeyDesc_vim_edit = "<leader>ve Edit ideavimrc"
+let g:WhichKeyDesc_vim_reload = "<leader>vr Reload ideavimrc"
+
+
+" Misc IDE interaction
+nmap <leader>m <Action>(ShowPopupMenu)
+nmap <leader>T <Action>(ActivateTerminalToolWindow)
+let g:WhichKeyDesc_popup_menu = "<leader>m Show Popup Menu"
+let g:WhichKeyDesc_terminal = "<leader>T Terminal"
+
+
 " Information commands
-nmap <leader>ie <action>(ShowErrorDescription)
-nmap <leader>it <action>(ExpressionTypeInfo)
-nmap <leader>ip <action>(ParameterInfo)
-nmap <leader>ij <action>(QuickJavaDoc)
-nmap <leader>if <action>(FileStructurePopup)
-nmap <leader>iU <action>(ShowUmlDiagram)
-nmap <leader>ih <action>(CallHierarchy)
-nmap <leader>iu <action>(ShowUsages)
-nmap <leader>im <action>(MethodHierarchy)
+nmap <leader>ie <Action>(ShowErrorDescription)
+nmap <leader>it <Action>(ExpressionTypeInfo)
+nmap <leader>ip <Action>(ParameterInfo)
+nmap <leader>ij <Action>(QuickJavaDoc)
+nmap <leader>if <Action>(FileStructurePopup)
+nmap <leader>iU <Action>(ShowUmlDiagram)
+nmap <leader>ih <Action>(CallHierarchy)
+nmap <leader>iu <Action>(ShowUsages)
+nmap <leader>im <Action>(MethodHierarchy)
 let g:WhichKeyDesc_info = "<leader>i Information"
 let g:WhichKeyDesc_info_error = "<leader>ie Error Description"
 let g:WhichKeyDesc_info_type = "<leader>it Expression Type"
@@ -128,12 +182,12 @@ let g:WhichKeyDesc_info_method_hierarchy = "<leader>im Method Hierarchy"
 
 
 " Window splits
-nmap <leader>wv <action>(SplitVertically)
-nmap <leader>wh <action>(SplitHorizontally)
-nmap <leader>wu <action>(Unsplit)
-nmap <leader>wm <action>(MoveEditorToOppositeTabGroup)
-nmap <leader>wb <action>(Back)
-nmap <leader>wf <action>(Forward)
+nmap <leader>wv <Action>(SplitVertically)
+nmap <leader>wh <Action>(SplitHorizontally)
+nmap <leader>wu <Action>(Unsplit)
+nmap <leader>wm <Action>(MoveEditorToOppositeTabGroup)
+nmap <leader>wb <Action>(Back)
+nmap <leader>wf <Action>(Forward)
 let g:WhichKeyDesc_window = "<leader>w Window splits"
 let g:WhichKeyDesc_window_split_vertically = "<leader>wv Split vertically"
 let g:WhichKeyDesc_window_split_horizontally = "<leader>wh Split horizontally"
@@ -143,7 +197,7 @@ let g:WhichKeyDesc_window_split_back = "<leader>wb Back split"
 let g:WhichKeyDesc_window_split_forward = "<leader>wf Forward split"
 
 
-" Tab Navigation and Management
+" Tab navigation and management
 nmap <leader>tP <Action>(PinActiveEditorTab)
 nmap <leader>tg1 <Action>(GoToTab1)
 nmap <leader>tg2 <Action>(GoToTab2)
@@ -176,11 +230,10 @@ let g:WhichKeyDesc_tabs_close_all_but_active = "<leader>to Close All Tabs But Ac
 let g:WhichKeyDesc_tabs_close_all_unpinned = "<leader>ta Close All Unpinned Tabs"
 
 
-
 " Display options
-map <leader>Dd <action>(ToggleDistractionFreeMode)
-map <leader>Dz <action>(ToggleZenMode)
-map <leader>Df <action>(ToggleFullScreen)
+map <leader>Dd <Action>(ToggleDistractionFreeMode)
+map <leader>Dz <Action>(ToggleZenMode)
+map <leader>Df <Action>(ToggleFullScreen)
 let g:WhichKeyDesc_display = "<leader>D Display options"
 let g:WhichKeyDesc_zen_mode = "<leader>Dz Toggle Zen mode"
 let g:WhichKeyDesc_df_mode = "<leader>Dd Toggle Distraction-Free mode"
@@ -200,7 +253,7 @@ nmap <leader>fp <Action>(ManageRecentProjects)
 nmap <leader>fh <Action>(LocalHistory.ShowHistory)
 nmap <leader>ff <Action>(ShowFilePath)
 nmap <leader>fi <Action>(SelectIn)
-nmap <leader>fp <Action>(ReplaceInPath)
+nmap <leader>fR <Action>(ReplaceInPath)
 let g:WhichKeyDesc_file_opt = "<leader>f File navigation"
 let g:WhichKeyDesc_file_opt_goto_file = "<leader>fg Go To File"
 let g:WhichKeyDesc_file_opt_goto_content = "<leader>fc Find In Files"
@@ -214,18 +267,18 @@ let g:WhichKeyDesc_file_opt_recent_projects = "<leader>fp Manage Recent Projects
 let g:WhichKeyDesc_file_opt_history = "<leader>fh Show Local History"
 let g:WhichKeyDesc_file_opt_show_path = "<leader>ff Show File Path"
 let g:WhichKeyDesc_file_opt_select_in = "<leader>fi Select In"
-let g:WhichKeyDesc_file_opt_replace_in_path = "<leader>fp Replace In Path"
+let g:WhichKeyDesc_file_opt_replace_in_path = "<leader>fR Replace In Path"
 
 
-" Run Actions
-nmap <leader>rm <action>(RunMenu)
-nmap <leader>rn <action>(RunClass)
+" Run actions
+nmap <leader>rm <Action>(RunMenu)
+nmap <leader>rn <Action>(RunClass)
 nmap <leader>rc <Action>(ContextRun)
-nmap <leader>rr <action>(Rerun)
+nmap <leader>rr <Action>(Rerun)
 nmap <leader>rt <Action>(RunTests)
-nmap <leader>rf <action>(RerunFailedTests)
+nmap <leader>rf <Action>(RerunFailedTests)
 nmap <leader>rs <Action>(Stop)
-nmap <leader>rC <action>(ChooseRunConfiguration)
+nmap <leader>rC <Action>(ChooseRunConfiguration)
 let g:WhichKeyDesc_run = "<leader>r Run"
 let g:WhichKeyDesc_run_menu = "<leader>rm Run Menu"
 let g:WhichKeyDesc_run_class = "<leader>rn Run Class"
@@ -243,29 +296,29 @@ nmap <leader>dc <Action>(ContextDebug)
 nmap <leader>dv <Action>(ViewBreakpoints)
 nmap <leader>de <Action>(EditBreakpoint)
 nmap <leader>dm <Action>(XDebugger.MuteBreakpoints)
-nmap <leader>dt <Action>(ToggleLineBreakpoint)
+nmap <leader>db <Action>(ToggleLineBreakpoint)
 nmap <leader>dC <Action>(RunToCursor)
 nmap <leader>di <Action>(StepInto)
 nmap <leader>do <Action>(StepOver)
 nmap <leader>dr <Action>(Resume)
 nmap <leader>dR <Action>(EvaluateExpression)
-nmap <leader>dt <Action>(ActivateDebugToolWindow)
+nmap <leader>dw <Action>(ActivateDebugToolWindow)
 let g:WhichKeyDesc_debugging = "<leader>d Debugging"
 let g:WhichKeyDesc_debug_execute = "<leader>dx Execute Debug"
 let g:WhichKeyDesc_debug_context = "<leader>dc Context Debug"
 let g:WhichKeyDesc_debug_view_breakpoints = "<leader>dv View Breakpoints"
 let g:WhichKeyDesc_debug_edit_breakpoints = "<leader>de Edit Breakpoints"
 let g:WhichKeyDesc_debug_mute_breakpoints = "<leader>dm Mute Breakpoints"
-let g:WhichKeyDesc_debug_toggle_line_breakpoint = "<leader>dt Toggle Line Breakpoint"
+let g:WhichKeyDesc_debug_toggle_line_breakpoint = "<leader>db Toggle Line Breakpoint"
 let g:WhichKeyDesc_debug_run_to_cursor = "<leader>dC Run to Cursor"
 let g:WhichKeyDesc_debug_step_into = "<leader>di Step Into"
 let g:WhichKeyDesc_debug_step_over = "<leader>do Step Over"
 let g:WhichKeyDesc_debug_resume = "<leader>dr Resume Debugging"
 let g:WhichKeyDesc_debug_evaluate_expression = "<leader>dR Evaluate Expression"
-let g:WhichKeyDesc_debug_activate_tool_window = "<leader>dt Activate Debug Tool Window"
+let g:WhichKeyDesc_debug_activate_tool_window = "<leader>dw Activate Debug Tool Window"
 
 
-" Language Actions
+" Language / refactoring actions
 nmap <leader>ll <Action>(Refactorings.QuickListPopupAction)
 nmap <leader>lr <Action>(RenameElement)
 nmap <leader>lc <Action>(ChangeSignature)
@@ -285,6 +338,7 @@ let g:WhichKeyDesc_language = "<leader>l Language"
 let g:WhichKeyDesc_language_menu = "<leader>ll Quick List"
 let g:WhichKeyDesc_language_rename = "<leader>lr Rename"
 let g:WhichKeyDesc_language_change_signature = "<leader>lc Change Signature"
+let g:WhichKeyDesc_language_introduce_variable = "<leader>lv Introduce Variable"
 let g:WhichKeyDesc_language_inline_variable = "<leader>li Inline"
 let g:WhichKeyDesc_language_introduce_field = "<leader>lf Introduce Field"
 let g:WhichKeyDesc_language_extract_method = "<leader>lm Extract Method"
@@ -298,7 +352,7 @@ let g:WhichKeyDesc_language_inspect_code = "<leader>lI Inspect Code"
 let g:WhichKeyDesc_language_generate = "<leader>lG Generate"
 
 
-""" Bookmarks
+" Bookmarks
 nmap <leader>bm <Action>(Bookmarks)
 nmap <leader>bs <Action>(ShowBookmarks)
 nmap <leader>bt <Action>(ActivateBookmarksToolWindow)
@@ -331,7 +385,7 @@ let g:WhichKeyDesc_goto_test = "<leader>gT Go To Test"
 
 
 " Search
-nmap <leader>sS <action>(SearchEverywhere)
+nmap <leader>sS <Action>(SearchEverywhere)
 nmap <leader>su <Action>(FindUsages)
 nmap <leader>sn <Action>(ShowNavBar)
 nmap <leader>sa <Action>(GotoAction)
@@ -350,7 +404,7 @@ let g:WhichKeyDesc_search_symbol = "<leader>ss Search Symbol"
 let g:WhichKeyDesc_search_text = "<leader>st Search Text"
 
 
-" Case Conversion
+" Case conversion (requires the CaseConv IDE plugin)
 vmap <leader>cm <Action>(me.laria.code.idea_caseconv.convert_case_menu)
 vmap <leader>cc <Action>(me.laria.code.idea_caseconv.CamelCaseAction)
 vmap <leader>cp <Action>(me.laria.code.idea_caseconv.PascalCaseAction)
@@ -399,9 +453,21 @@ let g:WhichKeyDesc_git_commit_and_push = "<leader>GP Commit & Push"
 let g:WhichKeyDesc_git_menu = "<leader>Gm Menu"
 let g:WhichKeyDesc_git_fetch = "<leader>Gf Fetch"
 let g:WhichKeyDesc_git_annotate = "<leader>Ga Annotate"
-let g:WhichKeyDesc_git_log = "<leader>Gl Log"
 let g:WhichKeyDesc_git_tool = "<leader>Gt Tool"
 let g:WhichKeyDesc_git_rollback_changed_lines = "<leader>Gr Rollback"
 let g:WhichKeyDesc_git_open_pull_requests = "<leader>Go Open Pull Requests"
 let g:WhichKeyDesc_git_local_changes = "<leader>Gc Show Local Changes"
 let g:WhichKeyDesc_git_update_project = "<leader>Gu Update Project"
+
+
+"" ========================================================
+"" Per-IDE overrides (same file is loaded by every JetBrains IDE)
+"" Run `:echo &ide` to see the current IDE name.
+"" ========================================================
+if &ide =~? 'pycharm'
+  " PyCharm-only tweaks (e.g. Jupyter / scientific mode)
+elseif &ide =~? 'webstorm'
+  " WebStorm-only tweaks
+elseif &ide =~? 'rider'
+  " Rider-only tweaks
+endif
