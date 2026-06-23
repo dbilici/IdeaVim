@@ -65,12 +65,14 @@ set functextobj          " am = a method, aM = method incl. comments, im = inner
 " Which-key
 set which-key
 set notimeout
+let g:WhichKey_FontFamily = "JetBrains Mono"
 let g:WhichKey_FontSize = 20
 let g:WhichKey_PrefixColor = "#a403fe"
 let g:WhichKey_CommandColor = "#01ffff"
 let g:WhichKey_PrefixStyle = "bold"
 let g:WhichKey_KeyStyle = "italic"
 let g:WhichKey_SortOrder = "by_key_prefix_first"
+let g:WhichKey_SortCaseSensitive = "false"
 let g:WhichKey_ShowTypedSequence = "false"
 "" ========================================================
 "" Key mappings (non-leader)
@@ -115,6 +117,14 @@ nmap gi <Action>(GotoImplementation)
 nmap gr <Action>(FindUsages)
 nmap gy <Action>(GotoTypeDeclaration)
 
+" Show these bare-g mappings as readable labels in the which-key popup
+" (they already appear there because they are defined in this file).
+let g:WhichKeyDesc_g = "g Go To / LSP"
+let g:WhichKeyDesc_g_declaration = "gd Go To Declaration"
+let g:WhichKeyDesc_g_implementation = "gi Go To Implementation"
+let g:WhichKeyDesc_g_references = "gr Find Usages"
+let g:WhichKeyDesc_g_type = "gy Go To Type Declaration"
+
 " Multiple cursors (IDE multi-caret)
 " Alt mappings can be intercepted by the OS/keymap on some systems; remap if so.
 map <A-n> <Action>(SelectNextOccurrence)
@@ -131,6 +141,18 @@ nnoremap <A-k> <Action>(MoveLineUp)
 
 " Tool windows popup
 nmap <C-S-m> <Action>(ToolWindowsGroup)
+
+" QoL motions
+" Keep the cursor centered after search and half-page jumps.
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+" Make Y behave like C and D (yank to end of line).
+nnoremap Y y$
+" Don't clobber the unnamed register when pasting over a visual selection.
+" If your IdeaVim build still overwrites it, swap for:  xnoremap <leader>p "_dP
+xnoremap p P
 
 " Clear search highlighting
 " Written as <Esc> on purpose (<C-[> is byte-identical to <Esc>).
