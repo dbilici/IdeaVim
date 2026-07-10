@@ -83,11 +83,20 @@ set functextobj
 
 set which-key
 set notimeout
+let g:WhichKey_FontFamily = "JetBrains Mono"
+let g:WhichKey_FontSize = 20
+let g:WhichKey_PrefixColor = "#a403fe"
+let g:WhichKey_CommandColor = "#01ffff"
+let g:WhichKey_PrefixStyle = "bold"
+let g:WhichKey_KeyStyle = "italic"
+let g:WhichKey_SortOrder = "by_key_prefix_first"
+let g:WhichKey_SortCaseSensitive = "false"
+let g:WhichKey_ShowTypedSequence = "false"
 ```
 
 - `exchange` Swap two pieces of text (`cx` + motion).
 - `commentary` Comment/uncomment (`gcc`, `gc` + motion).
-- `ReplaceWithRegister` Replace text with a register's contents (`gr` + motion, `grr` for a line).
+- `ReplaceWithRegister` Replace text with a register's contents. Note: normal-mode `gr` is remapped to *Find Usages* in this config (see [LSP-style Bare Keys](#lsp-style-bare-keys)), so use visual-mode `gr` on a selection or `grr` for a whole line instead.
 - `surround` Add/change/delete surroundings (`ys`, `cs`, `ds`).
 - `nerdtree` File-explorer tree.
 - `easymotion` Fast on-screen jumps. **Its default prefix is `<leader><leader>` (space space)** — so a single space opens your which-key menu, and a double space starts an EasyMotion jump. Relies on the **AceJump** IDE plugin. `g:EasyMotion_override_acejump = 0` lets EasyMotion and AceJump coexist.
@@ -95,7 +104,7 @@ set notimeout
 - `highlightedyank` Briefly highlights yanked text.
 - `textobj-entire` / `indent-object` / `argtextobj` Text objects for the whole buffer (`ie`/`ae`), indentation (`ii`/`ai`), and function arguments (`ia`/`aa`).
 - `functextobj` Method/function text objects: `am` (a method), `aM` (incl. comments/annotations), `im` (inner body).
-- `which-key` + `notimeout` Popup that shows possible bindings after a prefix, with no timeout so it stays up.
+- `which-key` + `notimeout` Popup that shows possible bindings after a prefix, with no timeout so it stays up. The `g:WhichKey_*` variables control the popup's font, colors, and sorting — `FontFamily` must name an installed font, and since the popup is rendered via Swing's HTML support, font ligatures won't display. The readable labels in the popup (e.g. "Debugging" instead of a raw action ID) come from the `g:WhichKeyDesc_*` variables that accompany every mapping group in the config.
 
 > `vim-sneak` was removed — it overlapped EasyMotion and took over `s`/`S` (substitute). EasyMotion + QuickScope now cover jumping. To get sneak-style `s{char}{char}` back on a single engine, add `map s <Plug>(easymotion-s2)` (you lose `s`=substitute; use `cl` instead).
 
@@ -168,10 +177,25 @@ nmap gy <Action>(GotoTypeDeclaration)
 - `K` Quick documentation (hover) for the symbol under the cursor.
 - `gd` Go to declaration. *(Overrides native go-to-local-declaration.)*
 - `gi` Go to implementation. *(Overrides native insert-at-last-position; use `` `^ `` for that.)*
-- `gr` Find usages (references).
+- `gr` Find usages (references). *(Shadows ReplaceWithRegister's normal-mode `gr`; visual `gr` and `grr` still work.)*
 - `gy` Go to type declaration.
 
 These complement the discoverable `<leader>g` / `<leader>i` groups below — bare keys for speed, leader groups for discovery.
+
+### Quality-of-Life Motions
+
+```vim
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap Y y$
+xnoremap p P
+```
+
+- `n` / `N` and `<C-d>` / `<C-u>` Keep the cursor line centered (`zz`) after search jumps and half-page scrolls.
+- `Y` Yank to the end of the line, consistent with `C` and `D`. (Native `Y` is a historical alias for `yy`.)
+- `p` (visual mode) Paste over a selection **without clobbering the unnamed register**, so the same text can be pasted repeatedly. If your IdeaVim build still overwrites the register, use `xnoremap <leader>p "_dP` as a fallback.
 
 ### IDE Interaction
 
@@ -201,7 +225,7 @@ Space is the leader. Press it and pause to see the which-key popup. **Double spa
 | `<leader>m` | Show editor popup (context) menu |
 | `<leader>T` | Toggle the terminal tool window |
 
-> `ShowPopupMenu` is on `<leader>m` (not `<C-m>`) because `<C-m>` is the **same keycode as `<CR>`/Enter`.
+> `ShowPopupMenu` is on `<leader>m` (not `<C-m>`) because `<C-m>` is the **same keycode as `<CR>`/Enter**.
 
 ### Information · `<leader>i`
 
