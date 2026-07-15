@@ -1,6 +1,6 @@
 # IdeaVim Configuration
 
-A single-file, which-key-driven IdeaVim setup for JetBrains IDEs. For background and rationale, see my [Medium article](https://medium.com/@dbilici/a-practical-ideavim-setup-for-intellij-idea-cf74222e7b45).
+A single-file, which-key-driven IdeaVim setup for JetBrains IDEs. For background and rationale, see the article series: [Part 1: A Practical IdeaVim Setup for IntelliJ IDEA](https://medium.com/@dbilici/a-practical-ideavim-setup-for-intellij-idea-cf74222e7b45) and [Part 2: Hardening a Config I Thought Already Worked](https://medium.com/@dbilici/a-practical-ideavim-setup-part-2-hardening-a-config-i-thought-already-worked-7f9df20a4927).
 
 > **Compatibility:** Tested with IdeaVim 2.x on recent JetBrains IDEs (2025.x). Some options here (`functextobj`, `ideaput`, `sethandler`) require a reasonably up-to-date IdeaVim.
 
@@ -21,7 +21,7 @@ ln -s "$(pwd)/.ideavimrc" ~/.ideavimrc
 
 Reload without restarting via `<leader>vr`, the IdeaVim status-bar widget → **Reload**, or just restart the IDE.
 
-The same `~/.ideavimrc` is loaded by every JetBrains IDE (IntelliJ, PyCharm, WebStorm, Rider…). A few Java-specific actions (e.g. `EncapsulateFields`, `ShowUmlDiagram`) simply do nothing in IDEs that lack them — no errors. Two features need extra IDE plugins: **AceJump** (for EasyMotion) and **CaseConv** (for the `<leader>c` case conversions).
+The same `~/.ideavimrc` is loaded by every JetBrains IDE (IntelliJ, PyCharm, WebStorm, Rider…). A few Java-specific actions (e.g. `EncapsulateFields`, `ShowUmlDiagram`) simply do nothing in IDEs that lack them: no errors. One caveat that's easy to miss: the file travels between IDEs automatically, but the plugin set doesn't. Five Marketplace plugins must be installed **in each IDE** you use: **Which-Key** (the `<leader>` popup), **IdeaVim-EasyMotion** + **AceJump** (jumps), **CaseConv** (the `<leader>c` case conversions), and **FunctionTextObj** (`am`/`aM`/`im` text objects). A missing plugin fails silently: no popup, no error, just features that quietly don't happen.
 
 ## Options
 
@@ -49,7 +49,7 @@ set ideastatusicon=gray
 - `history=1000` Remembers more command-line entries.
 - `number relativenumber` Absolute number on the current line, relative elsewhere.
 - `showmode` / `showcmd` Show the current mode and partial commands. *(On by default in current IdeaVim; kept for clarity.)*
-- `ignorecase` + `smartcase` Search is case-insensitive **until** you type an uppercase letter. `smartcase` does nothing without `ignorecase` — both are required.
+- `ignorecase` + `smartcase` Search is case-insensitive **until** you type an uppercase letter. `smartcase` does nothing without `ignorecase`; both are required.
 - `incsearch` / `hlsearch` Incremental search and match highlighting.
 - `visualbell` Flash instead of beep.
 - `gdefault` Substitutions are global by default.
@@ -99,14 +99,14 @@ let g:WhichKey_ShowTypedSequence = "false"
 - `ReplaceWithRegister` Replace text with a register's contents. Note: normal-mode `gr` is remapped to *Find Usages* in this config (see [LSP-style Bare Keys](#lsp-style-bare-keys)), so use visual-mode `gr` on a selection or `grr` for a whole line instead.
 - `surround` Add/change/delete surroundings (`ys`, `cs`, `ds`).
 - `nerdtree` File-explorer tree.
-- `easymotion` Fast on-screen jumps. **Its default prefix is `<leader><leader>` (space space)** — so a single space opens your which-key menu, and a double space starts an EasyMotion jump. Relies on the **AceJump** IDE plugin. `g:EasyMotion_override_acejump = 0` lets EasyMotion and AceJump coexist.
-- `quickscope` Passively highlights jump targets, limited to `f`/`F`/`t`/`T`. No keymaps — pure enhancement.
+- `easymotion` Fast on-screen jumps. **Its default prefix is `<leader><leader>` (space space)**, so a single space opens your which-key menu, and a double space starts an EasyMotion jump. Relies on the **AceJump** IDE plugin. `g:EasyMotion_override_acejump = 0` lets EasyMotion and AceJump coexist.
+- `quickscope` Passively highlights jump targets, limited to `f`/`F`/`t`/`T`. No keymaps; pure enhancement.
 - `highlightedyank` Briefly highlights yanked text.
 - `textobj-entire` / `indent-object` / `argtextobj` Text objects for the whole buffer (`ie`/`ae`), indentation (`ii`/`ai`), and function arguments (`ia`/`aa`).
-- `functextobj` Method/function text objects: `am` (a method), `aM` (incl. comments/annotations), `im` (inner body).
-- `which-key` + `notimeout` Popup that shows possible bindings after a prefix, with no timeout so it stays up. The `g:WhichKey_*` variables control the popup's font, colors, and sorting — `FontFamily` must name an installed font, and since the popup is rendered via Swing's HTML support, font ligatures won't display. The readable labels in the popup (e.g. "Debugging" instead of a raw action ID) come from the `g:WhichKeyDesc_*` variables that accompany every mapping group in the config.
+- `functextobj` Method/function text objects: `am` (a method), `aM` (incl. JavaDoc/annotations), `im` (inner body).
+- `which-key` + `notimeout` Popup that shows possible bindings after a prefix, with no timeout so it stays up. The `g:WhichKey_*` variables control the popup's font, colors, and sorting. `FontFamily` must name an installed font, and since the popup is rendered via Swing's HTML support, font ligatures won't display. The readable labels in the popup (e.g. "Debugging" instead of a raw action ID) come from the `g:WhichKeyDesc_*` variables that accompany every mapping group in the config.
 
-> `vim-sneak` was removed — it overlapped EasyMotion and took over `s`/`S` (substitute). EasyMotion + QuickScope now cover jumping. To get sneak-style `s{char}{char}` back on a single engine, add `map s <Plug>(easymotion-s2)` (you lose `s`=substitute; use `cl` instead).
+> `vim-sneak` was removed: it overlapped EasyMotion and took over `s`/`S` (substitute). EasyMotion + QuickScope now cover jumping. To get sneak-style `s{char}{char}` back on a single engine, add `map s <Plug>(easymotion-s2)` (you lose `s`=substitute; use `cl` instead).
 
 ## Key Mappings
 
@@ -136,7 +136,7 @@ nmap ]] <Action>(MethodDown)
 - `sethandler <C-h/j/k/l> n:vim` Hands these keys to IdeaVim in normal mode so pane navigation is never swallowed by an IDE action.
 - `<C-p>` / `<C-n>` Previous / next tab.
 - `<C-h/l/k/j>` Move to the pane left / right / up / down.
-- `<C-o>` / `<C-i>` Back / forward in the navigation history. In Vim `<C-o>` goes *back* and `<C-i>` *forward*; also `<C-i>` is the **same keycode as `<Tab>`**, so `<Tab>` triggers Forward too — exactly the Vim-native behavior.
+- `<C-o>` / `<C-i>` Back / forward in the navigation history. In Vim `<C-o>` goes *back* and `<C-i>` *forward*; also `<C-i>` is the **same keycode as `<Tab>`**, so `<Tab>` triggers Forward too, exactly the Vim-native behavior.
 - `[[` / `]]` Jump to the previous / next method.
 
 ### Editing & Selection
@@ -177,10 +177,10 @@ nmap gy <Action>(GotoTypeDeclaration)
 - `K` Quick documentation (hover) for the symbol under the cursor.
 - `gd` Go to declaration. *(Overrides native go-to-local-declaration.)*
 - `gi` Go to implementation. *(Overrides native insert-at-last-position; use `` `^ `` for that.)*
-- `gr` Find usages (references). *(Shadows ReplaceWithRegister's normal-mode `gr`; visual `gr` and `grr` still work.)*
+- `gr` Find usages (references). *(Shadows ReplaceWithRegister's normal-mode `gr`; visual `gr` and `grr` still work. On older IdeaVim builds the plugin's defaults could override user mappings; see VIM-4180.)*
 - `gy` Go to type declaration.
 
-These complement the discoverable `<leader>g` / `<leader>i` groups below — bare keys for speed, leader groups for discovery.
+These complement the discoverable `<leader>g` / `<leader>i` groups below: bare keys for speed, leader groups for discovery.
 
 ### Quality-of-Life Motions
 
@@ -428,4 +428,4 @@ Run `:echo &ide` to see the current IDE name.
 
 ## Finding Action IDs
 
-Action IDs can change between IDE versions. If a mapping stops working, enable **`IdeaVim: Track Action Ids`** (open *Search Everywhere* / double-press Shift, type the command, toggle it on) — the IDE then shows the action ID of anything you trigger, ready to copy into your config.
+Action IDs can change between IDE versions. If a mapping stops working, enable **`IdeaVim: Track Action Ids`** (open *Search Everywhere* / double-press Shift, type the command, toggle it on); the IDE then shows the action ID of anything you trigger, ready to copy into your config.
